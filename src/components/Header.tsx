@@ -27,70 +27,30 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className={`${isHero ? 'bg-transparent' : 'bg-blue-dark'} rounded-full px-6 py-3 shadow-lg flex items-center justify-between transition-colors duration-300`}>
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2 pr-8">
-              <div className="w-36 h-16 bg-transparent rounded flex items-center justify-center p-0">
-                <img 
-                  src="/8d449375-2572-4fca-95f4-3e05daf166ca_removalai_preview (1).png" 
-                  alt="Infinite Spa Logo" 
-                  className="w-full h-full object-contain" 
-                  style={{ background: 'transparent' }}
-                />
-              </div>
+        <div className={`${isHero ? '' : 'bg-white shadow-lg'} rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300`}>
+          {/* Logo */}
+          <div className="flex items-center space-x-2 pr-8">
+            <div className="w-36 h-16 bg-transparent rounded flex items-center justify-center p-0">
+              <img 
+                src="/8d449375-2572-4fca-95f4-3e05daf166ca_removalai_preview (1).png" 
+                alt="Infinite Spa Logo" 
+                className="w-full h-full object-contain" 
+                style={{ background: 'transparent' }}
+              />
             </div>
-            
-            <nav className="hidden md:flex items-center space-x-6 text-white">
-              <button 
-                onClick={() => scrollToSection('spa-designs')}
-                className="text-white font-medium hover:text-sky-300 transition-colors"
-              >
-                Spa Designs
-              </button>
-              <button 
-                onClick={() => scrollToSection('turnkey-finish')}
-                className="text-white hover:text-sky-300 transition-colors"
-              >
-                Turnkey finish
-              </button>
-              <button 
-                onClick={() => scrollToSection('benefits')}
-                className="text-white hover:text-sky-300 transition-colors"
-              >
-                Come & Meet Us
-              </button>
-              <button 
-                onClick={() => scrollToSection('gallery')}
-                className="text-white hover:text-sky-300 transition-colors"
-              >
-                Gallery
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-white hover:text-sky-300 transition-colors"
-              >
-                Contact
-              </button>
-            </nav>
-            
-            <button className="md:hidden text-white">
-              <Menu className="w-5 h-5 text-gray-700" />
-            </button>
           </div>
-
-          <div className="flex items-center space-x-3 text-white">
-            <button 
-              onClick={() => scrollToSection('catalogue')}
-              className="px-4 py-2 text-white hover:text-sky-300 font-medium transition-colors"
-            >
-              Order catalogue
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="px-6 py-2 bg-sky-500 text-white rounded-full hover:bg-sky-400 font-medium transition-colors"
-            >
-              Find Infinite-Spa Agent
-            </button>
+          {/* Centered Navigation */}
+          <nav className="flex-1 flex justify-center items-center">
+            <div className="flex items-center space-x-8 text-blue-dark">
+              <a href="/" className="font-medium hover:text-sky-600 transition-colors">Home</a>
+              <a href="/our-story" className="font-medium hover:text-sky-600 transition-colors">Our Story</a>
+              <a href="/about" className="font-medium hover:text-sky-600 transition-colors">About</a>
+              <a href="/contact" className="font-medium hover:text-sky-600 transition-colors">Contact Us</a>
+            </div>
+          </nav>
+          {/* QUOTE Button */}
+          <div className="flex items-center">
+            <a href="/contact" className="ml-6 px-6 py-2 rounded-full bg-white text-blue-dark font-bold shadow hover:bg-gray-100 transition-colors">QUOTE</a>
           </div>
         </div>
       </div>

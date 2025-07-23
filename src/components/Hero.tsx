@@ -1,20 +1,34 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const textRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const textElement = textRef.current;
+      
+      if (textElement) {
+        // Calculate the translation based on scroll position
+        // Move text to the left as user scrolls down
+        const translateX = Math.min(scrollY * 1.2, 850); // Max 850px to the left, balanced movement
+        textElement.style.transform = `translateX(-${translateX}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen overflow-hidden bg-transparent">
+    <section 
+      id="hero" 
+      className="relative min-h-screen overflow-hidden bg-transparent"
+    >
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/Create_nice_showcase_202507161937.mp4"
+        src="/0723.mp4"
         autoPlay
         loop
         muted
@@ -22,26 +36,16 @@ const Hero = () => {
       />
       
       {/* Content Overlay */}
-      <div className="relative z-10 min-h-screen flex items-end pb-8">
+      <div className="relative z-10 min-h-screen flex items-end justify-center pb-8">
         <div className="max-w-7xl mx-auto px-6 w-full">
-          <div className="flex items-end">
-            {/* Left Content */}
-            <div className="text-white flex flex-col gap-6 items-start pl-2">
-              <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded text-base font-medium self-start mb-2">
-                Wellness designs
-              </span>
-              <h1 className="text-4xl lg:text-5xl font-light leading-snug mb-6 whitespace-nowrap">
-                Ready-made wellness units by Infinite-Spa
-              </h1>
-              <button 
-                onClick={() => scrollToSection('spa-designs')}
-                className="bg-white text-gray-900 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors flex items-center space-x-2"
-              >
-                <span>Find out more</span>
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-
+          <div className="text-center">
+            <h1 
+              ref={textRef}
+              className="text-9xl lg:text-[12rem] text-white tracking-[0.5em] transition-transform duration-300 ease-out" 
+              style={{fontFamily: 'Orbitron, sans-serif', fontWeight: 100}}
+            >
+              INFINITESPA
+            </h1>
           </div>
         </div>
       </div>
