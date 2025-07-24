@@ -25,6 +25,9 @@ export default {
         'sky-300': '#7DD3FC',
         'sky-400': '#38BDF8',
         'sky-500': '#0EA5E9',
+        'cream': '#fffefc',
+        'beige': '#f7f1e8',
+        'pink': '#c769b0',
       },
       fontFamily: {
         'serif': ['Playfair Display', 'serif'],

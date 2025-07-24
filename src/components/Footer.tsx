@@ -10,9 +10,9 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="bg-blue-dark mt-16 pt-12 text-white">
+    <footer id="contact" className="bg-blue-dark pt-24 text-white">
       {/* Footer Links */}
-      <div className="max-w-7xl mx-auto px-6 pb-16">
+      <div className="max-w-7xl mx-auto px-6 pb-24">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
             <h3 className="font-medium text-white mb-4">INFINITE SPA DESIGNS</h3>

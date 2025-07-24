@@ -11,7 +11,7 @@ const Hero = () => {
       if (textElement) {
         // Calculate the translation based on scroll position
         // Move text to the left as user scrolls down
-        const translateX = Math.min(scrollY * 1.2, 850); // Max 850px to the left, balanced movement
+        const translateX = Math.min(scrollY * 1.5, 1200); // Max 1200px to the left, increased speed
         textElement.style.transform = `translateX(-${translateX}px)`;
       }
     };
@@ -23,7 +23,7 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen overflow-hidden bg-transparent"
+      className="relative h-screen overflow-hidden bg-transparent pt-24"
     >
       {/* Background Video */}
       <video
@@ -36,7 +36,7 @@ const Hero = () => {
       />
       
       {/* Content Overlay */}
-      <div className="relative z-10 min-h-screen flex items-end justify-center pb-8">
+      <div className="relative z-10 h-screen flex items-end justify-center pb-16">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="text-center">
             <h1 

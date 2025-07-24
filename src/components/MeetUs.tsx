@@ -5,13 +5,13 @@ const defaultTeamMembers = [
   {
     name: "Matt Boney",
     role: "CEO",
-    image: "/1736995044237.jpg",
+    image: "/6_Photo%20-%203%20(2).jpg",
     bio: "2X Founder, $3.5M in Daypass Sales, 12 years in hospitality."
   },
   {
     name: "Misha Krymov",
     role: "Product",
-    image: "/1516866626270.jpg",
+    image: "/6_Photo%20-%204%20(1).jpg",
     bio: "3x Founder, Award–winning architect, founder of a micro-hotel brand."
   }
 ];

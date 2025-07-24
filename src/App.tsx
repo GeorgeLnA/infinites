@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import OurStory from './pages/OurStory';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Test from './pages/Test';
 import ShowroomIntro from './components/ShowroomIntro';
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/test" element={<Test />} />
           </Routes>
           <Footer />
         </main>
