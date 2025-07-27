@@ -1,11 +1,11 @@
 import React from "react";
 import Hero from "./Hero";
-import { AboutUsSection } from "./AboutUsSection";
+// import { AboutUsSection } from "./AboutUsSection";
 import { ProductCategoriesSection } from "./ConsultingSection";
 import { ContactSection } from "./ContactSection";
-import { ServicesSection } from "./ProductsSection";
+import { InstallAndUse } from "./InstallAndUse";
 import { ProjectsSection } from "./ProjectsSection";
-import { ContactCTASection } from "./ServicesSection";
+import { ContactCTASection } from "./MainPageCTASection";
 
 export const Background = () => {
   return (
@@ -18,12 +18,7 @@ export const Background = () => {
       </div>
 
       <ProductCategoriesSection />
-      <ServicesSection />
-      {/* Thin empty white section */}
-      <div className="w-full h-24 bg-white"></div>
-      <AboutUsSection />
-      {/* Thin empty white section */}
-      <div className="w-full h-24 bg-white"></div>
+      <InstallAndUse />
       <ProjectsSection />
       <ContactCTASection />
     </div>

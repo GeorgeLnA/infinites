@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 export const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -21,7 +21,7 @@ export const ContactSection = () => {
             if (sectionTop <= 0) {
               // Calculate how much the section has scrolled past the top
               const scrolledPastTop = Math.abs(sectionTop);
-              const maxDistance = 555; // Adjusted stop point for larger image
+              const maxDistance = 485; // Set to 485 pixels
               const translateY = Math.min(scrolledPastTop * 1.0, maxDistance); // Cap at maxDistance
               leftColumnElement.style.transform = `translateY(${translateY}px)`;
             } else {
@@ -43,17 +43,17 @@ export const ContactSection = () => {
     {
       id: 1,
       text: "We believe in providing ubiquitous access to the world's most exceptional wellness amenities, wherever life may find you.",
-      className: "text-[#0d0c09] text-5xl lg:text-6xl font-thin leading-tight",
+      className: "leading-relaxed text-black font-thin tracking-tight",
     },
     {
       id: 2,
       text: "Infinite Spa was born from a desire to dissolve the boundaries around luxury wellness, making it available to anyone, anywhere.",
-      className: "text-[#0d0c09] text-5xl lg:text-6xl font-thin leading-tight",
+      className: "leading-relaxed text-black font-thin tracking-tight",
     },
     {
       id: 3,
       text: "By opening the door to world-class experiences, we aim to uplift mood, nurture health, and extend the arc of human longevity.",
-      className: "text-[#0d0c09] text-5xl lg:text-6xl font-thin leading-tight",
+      className: "leading-relaxed text-black font-thin tracking-tight",
     },
   ];
 
@@ -77,9 +77,13 @@ export const ContactSection = () => {
         </div>
 
         {/* Right Column - Static text */}
-        <div className="lg:col-span-3 space-y-8 flex flex-col items-center">
+        <div className="lg:col-span-3 space-y-6 flex flex-col items-center">
           {contentData.map((content) => (
-            <p key={content.id} className={content.className}>
+            <p 
+              key={content.id} 
+              className={content.className}
+              style={{fontFamily: 'Montserrat, sans-serif', fontSize: '2.75rem'}}
+            >
               {formatTextWithBreaks(content.text, content.id)}
             </p>
           ))}

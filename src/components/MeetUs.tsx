@@ -82,7 +82,7 @@ export const MeetUs = ({
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-64 h-64 object-cover rounded-xl shadow-lg"
+                  className="w-64 h-64 object-cover  shadow-lg"
                 />
               </div>
               <div className="text-center">
@@ -100,7 +100,7 @@ export const MeetUs = ({
           ))}
         </div>
         {/* Headquarters Section */}
-        <div className="text-center bg-blue-dark rounded-2xl p-12">
+        <div className="text-center bg-blue-dark  p-12">
           <h2 className="text-3xl font-bold text-white mb-4 font-heading uppercase tracking-wide">
             Our Headquarters
           </h2>

@@ -1,58 +1,74 @@
 import React from "react";
 
-export const ContactCTASection = () => {
+const ServicesSection = () => {
+  const serviceContent = {
+    mainDescription: {
+      lines: [
+        "Our aim is to offer a comprehensive spa service for",
+        "every budget that completely fulfills your wellness needs and",
+        "desires from planning to ultimate relaxation",
+      ],
+    },
+    showroom: {
+      title: "Infinite Spa - our wellness center in Miami.",
+      description: [
+        "Visit our exclusive wellness center in Miami, which serves as a source of inspiration and a point of contact for",
+        "anyone seeking transformative relaxation. In a luxurious setting, we present a wide selection of spa treatments that offer the",
+        "perfect choice for every wellness concept and therapeutic design."
+      ],
+      additionalInfo: [
+        "Our spa offers a large selection of treatments and wellness inspirations. We advise our customers with pleasure and",
+        "passion in order to find the perfect wellness solutions for each individual in a personalized manner. With our versatile",
+        "approaches, which we are inspired by every year at various wellness retreats and spa visits, we give every treatment a personal",
+        "touch."
+      ]
+    },
+  };
+
   return (
     <section
-      className="w-full h-screen relative overflow-hidden bg-blue-600"
+      className="w-full py-16 px-6 lg:px-16"
       role="region"
-      aria-label="Catalogue section"
+      aria-labelledby="services-heading"
     >
-      <div className="relative w-full h-full">
-        <div className="absolute inset-0 bg-blue-600">
-          <div className="absolute inset-0 bg-blue-700 bg-opacity-20" />
-        </div>
-
-        <div className="relative z-10 px-16 lg:px-24 h-full flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-white text-4xl lg:text-5xl font-thin leading-tight mb-4">
-                Free catalogue
-              </h2>
-              <h3 className="text-white text-2xl lg:text-3xl font-medium leading-relaxed mb-8">
-                Order today!
-              </h3>
+              <p 
+                className="text-lg font-medium text-[#11388a] leading-relaxed"
+                style={{ fontFamily: 'Inter' }}
+              >
+                {serviceContent.mainDescription.lines[0]} {serviceContent.mainDescription.lines[1]} {serviceContent.mainDescription.lines[2]}
+              </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <p className="text-white text-2xl lg:text-3xl font-normal leading-relaxed">
-                  All spa designs in one place
-                </p>
-                <p className="text-white text-xl lg:text-2xl font-light leading-relaxed">
-                  Inspiring wellness designs
-                </p>
-              </div>
-
-              <button
-                className="bg-white px-8 py-4 text-blue-600 font-medium hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 flex items-center gap-3 text-lg"
-                aria-label="Order catalogue"
-                type="button"
+            <div className="space-y-6">
+              <h2
+                id="services-heading"
+                className="text-xl font-medium text-[#11388a]"
+                style={{ fontFamily: 'Inter' }}
               >
-                <span>Order catalogue</span>
-                <div className="w-7 h-7 bg-blue-600 flex items-center justify-center">
-                  <svg
-                    className="w-3 h-3 -rotate-45"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M7 17l9.2-9.2M17 17V7H7" stroke="white" strokeWidth="2" fill="none"/>
-                  </svg>
-                </div>
-              </button>
+                {serviceContent.showroom.title}
+              </h2>
+
+              <p 
+                className="font-normal text-[#11388a]/60 text-lg leading-relaxed"
+                style={{ fontFamily: 'Inter' }}
+              >
+                {serviceContent.showroom.description[0]} {serviceContent.showroom.description[1]} {serviceContent.showroom.description[2]}
+              </p>
+
+              <p 
+                className="font-normal text-[#11388a]/60 text-lg leading-relaxed"
+                style={{ fontFamily: 'Inter' }}
+              >
+                {serviceContent.showroom.additionalInfo[0]} {serviceContent.showroom.additionalInfo[1]} {serviceContent.showroom.additionalInfo[2]} {serviceContent.showroom.additionalInfo[3]}
+              </p>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
-}; 
+};
+
+export default ServicesSection; 

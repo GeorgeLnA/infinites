@@ -16,13 +16,13 @@ const ShowroomSection = () => {
               <img 
                 src="/6_Photo - 2 (2).jpg" 
                 alt="Spa showroom with circular table and modern design"
-                className="w-full aspect-[4/3] object-cover rounded-2xl"
+                className="w-full aspect-[4/3] object-cover "
               />
             </div>
             
             <button className="inline-flex items-center text-gray-900 hover:text-blue-dark transition-colors group">
               <span className="text-lg font-medium mr-3">Learn more</span>
-              <div className="w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center group-hover:bg-pink-500 transition-colors">
+              <div className="w-8 h-8 bg-pink-400  flex items-center justify-center group-hover:bg-pink-500 transition-colors">
                 <ArrowRight className="w-4 h-4 text-white" />
               </div>
             </button>

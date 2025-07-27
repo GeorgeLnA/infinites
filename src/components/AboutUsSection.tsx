@@ -215,7 +215,7 @@ export const AboutUsSection = () => {
           {testimonials.map((_, i) => (
             <button
               key={i}
-              className={`w-3 h-3 rounded-full transition-colors ${
+              className={`w-3 h-3  transition-colors ${
                 currentPage === i + 1 ? 'bg-[#0d0c09]' : 'bg-gray-300'
               }`}
               onClick={() => setCurrentPage(i + 1)}

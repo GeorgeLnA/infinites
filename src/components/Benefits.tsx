@@ -20,7 +20,7 @@ const Benefits = () => {
           {/* Left Card - Climate Friendly */}
           <div 
             onClick={() => scrollToSection('turnkey-finish')}
-            className="relative rounded-3xl overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
+            className="relative  overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
           >
             <img 
               src="/6_Photo - 1 (2).jpg" 
@@ -42,7 +42,7 @@ const Benefits = () => {
           {/* Right Card - Smart Living */}
           <div 
             onClick={() => scrollToSection('contact')}
-            className="relative rounded-3xl overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
+            className="relative  overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
           >
             <img 
               src="/6_Photo - 2 (2).jpg" 

@@ -54,7 +54,7 @@ const BrowseCategories = () => {
           {products.map((product) => (
             <div 
               key={product.id} 
-              className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group cursor-pointer bg-white  overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img 
@@ -65,7 +65,7 @@ const BrowseCategories = () => {
               </div>
               <div className="p-6">
                 <div className="mb-2">
-                  <span className="text-sm font-medium text-blue-dark bg-blue-50 px-3 py-1 rounded-full">
+                  <span className="text-sm font-medium text-blue-dark bg-blue-50 px-3 py-1 ">
                     {product.category}
                   </span>
                 </div>
@@ -82,7 +82,7 @@ const BrowseCategories = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center px-8 py-4 bg-blue-dark text-white rounded-full hover:bg-blue-800 transition-colors font-medium">
+          <button className="inline-flex items-center px-8 py-4 bg-blue-dark text-white  hover:bg-blue-800 transition-colors font-medium">
             <span>View All Products</span>
             <ArrowRight className="w-5 h-5 ml-2" />
           </button>
