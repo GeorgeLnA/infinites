@@ -96,32 +96,33 @@ export const ProductCategoriesSection = () => {
 
   return (
     <section
-      className="w-full py-32"
+      className="w-full py-16 lg:py-32"
+      style={{ backgroundColor: '#0a1f4a' }}
       role="region"
       aria-labelledby="product-categories-heading"
     >
-      <div className="pr-16 lg:pr-24 mb-8 ml-8 lg:ml-16">
+      <div className="px-4 sm:px-6 lg:pr-16 lg:pr-24 mb-6 lg:mb-8 lg:ml-8 lg:ml-16">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-          <header className="mb-8 lg:mb-0">
+          <header className="mb-6 lg:mb-0 text-center lg:text-left">
             <h2
               id="product-categories-heading"
-              className="text-4xl font-normal text-[#0d0c09] leading-tight text-center"
+              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight"
             >
-              Product Categories
+              Gallery
             </h2>
           </header>
 
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-[#0d0c09] text-lg font-medium leading-relaxed mb-6 lg:mb-0 max-w-xs text-center">
+          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
+            <p className="text-white text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
               Discover our range
             </p>
 
             <nav
-              className="flex gap-4"
+              className="flex gap-4 justify-center lg:justify-start"
               aria-label="Product navigation"
             >
               <button
-                className={`w-8 h-8 focus:outline-none focus:ring-2 focus:ring-[#0d0c09] focus:ring-offset-2 transition-opacity ${
+                className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
                   currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
                 }`}
                 aria-label="Previous products"
@@ -129,15 +130,15 @@ export const ProductCategoriesSection = () => {
                 onClick={scrollPrev}
                 disabled={currentIndex === 0}
               >
-                <div className="h-8 flex items-center justify-center">
-                  <svg className="w-4 h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24">
+                <div className="h-6 lg:h-8 flex items-center justify-center">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
                     <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
                   </svg>
                 </div>
               </button>
 
               <button
-                className={`w-8 h-8 focus:outline-none focus:ring-2 focus:ring-[#0d0c09] focus:ring-offset-2 transition-opacity ${
+                className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
                   currentIndex === productCategories.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
                 }`}
                 aria-label="Next products"
@@ -145,8 +146,8 @@ export const ProductCategoriesSection = () => {
                 onClick={scrollNext}
                 disabled={currentIndex === productCategories.length - 1}
               >
-                <div className="h-8 flex items-center justify-center">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <div className="h-6 lg:h-8 flex items-center justify-center">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
                     <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
                   </svg>
                 </div>
@@ -170,7 +171,7 @@ export const ProductCategoriesSection = () => {
               }}
             >
         <div
-          className="flex gap-1 lg:gap-2 ml-8 lg:ml-16 pb-4"
+          className="flex gap-1 lg:gap-2 ml-4 sm:ml-6 lg:ml-8 lg:ml-16 pb-4"
           role="list"
           aria-label="Product categories"
           style={{ minWidth: 'max-content' }}
@@ -178,17 +179,17 @@ export const ProductCategoriesSection = () => {
           {productCategories.map((category, index) => (
             <article
               key={category.id}
-              className="w-full lg:w-[400px] flex-shrink-0"
+              className="w-[280px] sm:w-[320px] lg:w-[400px] flex-shrink-0"
               role="listitem"
             >
-              <div className="relative w-full h-[450px] lg:h-[650px] bg-gray-200 overflow-hidden group cursor-pointer">
+              <div className="relative w-full h-[350px] sm:h-[400px] lg:h-[650px] bg-gray-200 overflow-hidden group cursor-pointer">
                 <img
                   src={category.image}
                   alt={category.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500" />
-                <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-sm">
+                <div className="absolute top-2 left-2 lg:top-4 lg:left-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs lg:text-sm">
                   {category.title}
                 </div>
               </div>

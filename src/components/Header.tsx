@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Home, Menu } from 'lucide-react';
+import { Home, Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isHero, setIsHero] = useState(true);
   const [isMainPage, setIsMainPage] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Check if we're on the main page
@@ -49,36 +50,128 @@ const Header = () => {
     }
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHero && isMainPage ? 'bg-transparent' : 'bg-white shadow-sm'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHero && isMainPage ? 'bg-transparent' : 'shadow-sm'}`} style={isHero && isMainPage ? {} : { backgroundColor: '#0a1f4a' }}>
       <div className="w-full">
         <div className={`px-6 flex items-center justify-between transition-all duration-300 ${isHero && isMainPage ? 'py-0.5' : 'py-1'}`}>
           {/* Logo */}
-          <div className="flex items-center space-x-2 pr-8">
-            <div className="w-36 h-16 bg-transparent rounded flex items-center justify-center p-0">
+          <div className="relative pr-8">
+            <a href="/" className="block w-48 h-16 bg-transparent rounded flex items-center justify-center p-0 -ml-4 hover:opacity-80 transition-opacity">
               <img 
-                src={isHero && isMainPage ? "/logo.png" : "/logo2.png"}
+                src={isHero && isMainPage ? "/logo.png" : "/logo.png"}
                 alt="Infinite Spa Logo" 
                 className="w-full h-full object-contain" 
-                style={{ background: 'transparent' }}
+                style={{ background: 'transparent', filter: isHero && isMainPage ? 'none' : 'brightness(0) invert(1)' }}
               />
-            </div>
+            </a>
+            <a href="/" className="absolute inset-0 flex items-center justify-start pl-32 text-lg lg:text-xl text-white tracking-[0.1em] font-light whitespace-nowrap hover:opacity-80 transition-opacity"
+              style={{fontFamily: 'Orbitron, sans-serif'}}
+            >
+              INFINITE SPA
+            </a>
           </div>
-          {/* Centered Navigation */}
-          <nav className="flex-1 flex justify-center items-center">
-                               <div className={`flex items-center space-x-8 transition-opacity duration-500 ${isHero && isMainPage ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}>
-                     <a href="/" className="font-medium text-[#11388a] hover:text-[#0A2239] transition-colors">Home</a>
-                     <a href="/our-story" className="font-medium text-[#11388a] hover:text-[#0A2239] transition-colors">Our Story</a>
-                     <a href="/about" className="font-medium text-[#11388a] hover:text-[#0A2239] transition-colors">About</a>
-                     <a href="/about-us" className="font-medium text-[#11388a] hover:text-[#0A2239] transition-colors">About Us</a>
-                     <a href="/contact" className="font-medium text-[#11388a] hover:text-[#0A2239] transition-colors">Contact Us</a>
-                   </div>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex flex-1 justify-center items-center">
+            <div className="flex items-center space-x-8">
+              <a href="/" className="font-medium text-white hover:text-gray-200 transition-colors">Home</a>
+              <a href="/our-story" className="font-medium text-white hover:text-gray-200 transition-colors">Our Story</a>
+              <a href="/about-us" className="font-medium text-white hover:text-gray-200 transition-colors">Technology</a>
+              <a href="/contact" className="font-medium text-white hover:text-gray-200 transition-colors">Contact us</a>
+            </div>
           </nav>
-          {/* QUOTE Button */}
-          <div className={`flex items-center transition-opacity duration-500 ${isHero && isMainPage ? 'opacity-0 pointer-events-none select-none' : 'opacity-100'}`}>
-            <a href="/contact" className={`ml-6 px-6 py-2  font-bold transition-colors ${isHero && isMainPage ? 'bg-white/80 text-blue-dark hover:bg-white' : 'bg-transparent text-[#11388a] hover:text-[#0A2239] border border-[#11388a] hover:bg-[#11388a] hover:text-white'}`}>QUOTE</a>
+          
+          {/* Desktop QUOTE Button */}
+          <div className="hidden lg:flex items-center">
+            <a 
+              href="/booking" 
+              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0a1f4a]"
+            >
+              <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+              <span className="relative font-medium text-sm tracking-wider">Book a Call</span>
+              <svg className="relative w-3.5 h-3.5 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-white hover:text-gray-200 transition-colors p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-[#0a1f4a] border-t border-white/10">
+            <div className="px-6 py-4 space-y-4">
+              {/* Mobile Navigation Links */}
+              <div className="space-y-3">
+                <a 
+                  href="/" 
+                  className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </a>
+                <a 
+                  href="/our-story" 
+                  className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"
+                  onClick={closeMobileMenu}
+                >
+                  Our Story
+                </a>
+                <a 
+                  href="/about-us" 
+                  className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"
+                  onClick={closeMobileMenu}
+                >
+                  Technology
+                </a>
+                <a 
+                  href="/contact" 
+                  className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"
+                  onClick={closeMobileMenu}
+                >
+                  Contact us
+                </a>
+              </div>
+              
+              {/* Mobile CTA Button */}
+              <div className="pt-4 border-t border-white/10">
+                <a 
+                  href="/booking" 
+                  className="group relative inline-flex items-center justify-center w-full px-6 py-3 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0a1f4a]"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                  <span className="relative font-medium text-base tracking-wider">Book a Call</span>
+                  <svg className="relative w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

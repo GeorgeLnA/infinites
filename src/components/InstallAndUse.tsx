@@ -13,32 +13,33 @@ export const InstallAndUse = () => {
   const [hoveredStep, setHoveredStep] = React.useState<number | null>(null);
 
   return (
-    <section className="w-full py-32" aria-labelledby="install-use-heading">
-      <div className="pr-4 lg:pr-8 mb-8 ml-4 lg:ml-8">
+    <section className="w-full py-16 lg:py-32" aria-labelledby="install-use-heading">
+      <div className="px-4 sm:px-6 lg:pr-4 lg:pr-8 mb-6 lg:mb-8 lg:ml-4 lg:ml-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-          <header className="mb-8 lg:mb-0">
+          <header className="mb-6 lg:mb-0 text-center lg:text-left">
             <h2
               id="install-use-heading"
-              className="text-4xl font-normal text-[#0d0c09] leading-tight text-center"
+              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0a1f4a] leading-tight"
             >
-              Install and Use
+              Easy to Install
             </h2>
           </header>
 
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-[#0d0c09] text-lg font-medium leading-relaxed mb-6 lg:mb-0 max-w-xs text-center">
+          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
+            <p className="text-[#0a1f4a] text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
               Simple setup process
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ml-4 lg:ml-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-4 px-4 sm:px-6 lg:ml-4 lg:ml-8">
         {/* Video Section */}
-        <div className="relative w-full aspect-square bg-gray-200 overflow-hidden">
+        <div className="relative w-full aspect-video lg:aspect-square bg-gray-200 overflow-hidden order-2 lg:order-1">
           <video
             className="w-full h-full object-cover"
-            src="/The_ground_is_202507161756.mp4"
+            style={{ objectPosition: '32% center' }}
+            src="/easy.mp4"
             autoPlay
             loop
             muted
@@ -48,7 +49,7 @@ export const InstallAndUse = () => {
         </div>
 
         {/* Steps List - matches video height */}
-        <div className="px-4 lg:px-8 aspect-square flex flex-col">
+        <div className="px-2 sm:px-4 lg:px-8 min-h-[400px] lg:aspect-square flex flex-col order-1 lg:order-2">
           {steps.map((step, index) => {
             // Calculate dynamic height based on hover state
             const isHovered = hoveredStep === index;
@@ -95,20 +96,20 @@ export const InstallAndUse = () => {
                   }
                 }}
               >
-                <div className="flex items-center gap-6 w-full py-4 pl-2">
+                <div className="flex items-center gap-3 sm:gap-4 lg:gap-6 w-full py-3 lg:py-4 pl-1 lg:pl-2">
                   {/* Clean numbered circle */}
-                  <div className={`flex-shrink-0 w-12 h-12  border-2 flex items-center justify-center text-lg font-medium transition-all duration-600 ease-out ${
+                  <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 border-2 flex items-center justify-center text-sm sm:text-base lg:text-lg font-medium transition-all duration-600 ease-out ${
                     isHovered 
-                      ? 'bg-[#0d0c09] text-white border-[#0d0c09] scale-105' 
-                      : 'bg-white text-[#0d0c09] border-[#0d0c09]'
+                      ? 'bg-[#0a1f4a] text-white border-[#0a1f4a] scale-105' 
+                      : 'bg-white text-[#0a1f4a] border-[#0a1f4a]'
                   }`}>
                     {index + 1}
                   </div>
                   
                   {/* Step text */}
-                  <div className={`text-lg font-normal text-[#0d0c09] leading-tight flex-1 transition-all duration-600 ease-out ${
+                  <div className={`text-sm sm:text-base lg:text-lg font-normal text-[#0a1f4a] leading-tight flex-1 transition-all duration-600 ease-out ${
                     isHovered 
-                      ? 'text-xl font-medium' 
+                      ? 'sm:text-lg lg:text-xl font-medium' 
                       : ''
                   }`}>
                     {step}
