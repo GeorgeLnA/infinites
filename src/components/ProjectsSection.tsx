@@ -4,13 +4,13 @@ export const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfreh2brftpr16z4z1z.png",
-      title: "Winter Retreat",
+      image: "/DSC_4358.jpg",
+      title: "SLEEPBOX",
     },
     {
       id: 2,
-      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfsfwnsax6qx1vwv874.png",
-      title: "Alpine Sanctuary",
+      image: "/IMG_0288.webp",
+      title: "Model 106",
     },
   ];
 
