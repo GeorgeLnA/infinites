@@ -53,13 +53,16 @@ export const ProjectsSection = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500" />
+                
+                {/* Text Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <h3 className="font-medium text-white text-xl lg:text-2xl leading-tight">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
 
-              <header className="mt-3 sm:mt-4 lg:mt-6">
-                <h3 className="font-normal text-white text-lg sm:text-xl lg:text-2xl leading-tight">
-                  {project.title}
-                </h3>
-              </header>
+
             </article>
           ))}
         </div>
