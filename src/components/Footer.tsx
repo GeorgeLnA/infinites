@@ -117,13 +117,13 @@ const Footer = () => {
               {/* Social Media */}
               <div className="flex space-x-3">
                 <button className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors">
-                  <Facebook className="w-4 h-4" style={{ color: '#0a1f4a' }} />
+                  <Facebook className="w-4 h-4" style={{ color: '#0b1c26' }} />
                 </button>
                 <button className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors">
-                  <Instagram className="w-4 h-4" style={{ color: '#0a1f4a' }} />
+                  <Instagram className="w-4 h-4" style={{ color: '#0b1c26' }} />
                 </button>
                 <button className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors">
-                  <Youtube className="w-4 h-4" style={{ color: '#0a1f4a' }} />
+                  <Youtube className="w-4 h-4" style={{ color: '#0b1c26' }} />
                 </button>
               </div>
               

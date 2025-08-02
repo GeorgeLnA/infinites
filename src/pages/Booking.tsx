@@ -18,7 +18,7 @@ const Booking = () => {
         {!userType ? (
           // User Type Selection
           <div className="text-center">
-            <h2 className="text-4xl font-normal text-[#0a1f4a] mb-8 leading-tight">
+            <h2 className="text-4xl font-normal text-[#0b1c26] mb-8 leading-tight">
               How can we help you?
             </h2>
             <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -29,15 +29,15 @@ const Booking = () => {
               {/* Customer Option */}
               <button
                 onClick={() => handleUserTypeSelect('customer')}
-                className="group p-8 border-2 border-[#0a1f4a] bg-white hover:bg-[#0a1f4a] transition-all duration-300 rounded-none"
+                className="group p-8 border-2 border-[#0b1c26] bg-white hover:bg-[#0b1c26] transition-all duration-300 rounded-none"
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-[#0a1f4a] group-hover:bg-white mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
-                    <svg className="w-8 h-8 text-white group-hover:text-[#0a1f4a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-[#0b1c26] group-hover:bg-white mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
+                    <svg className="w-8 h-8 text-white group-hover:text-[#0b1c26]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-medium text-[#0a1f4a] group-hover:text-white mb-2 transition-colors duration-300">
+                  <h3 className="text-xl font-medium text-[#0b1c26] group-hover:text-white mb-2 transition-colors duration-300">
                     Customer
                   </h3>
                   <p className="text-gray-600 group-hover:text-gray-200 transition-colors duration-300">
@@ -49,15 +49,15 @@ const Booking = () => {
               {/* Investor Option */}
               <button
                 onClick={() => handleUserTypeSelect('investor')}
-                className="group p-8 border-2 border-[#0a1f4a] bg-white hover:bg-[#0a1f4a] transition-all duration-300 rounded-none"
+                className="group p-8 border-2 border-[#0b1c26] bg-white hover:bg-[#0b1c26] transition-all duration-300 rounded-none"
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-[#0a1f4a] group-hover:bg-white mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
-                    <svg className="w-8 h-8 text-white group-hover:text-[#0a1f4a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-[#0b1c26] group-hover:bg-white mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
+                    <svg className="w-8 h-8 text-white group-hover:text-[#0b1c26]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-medium text-[#0a1f4a] group-hover:text-white mb-2 transition-colors duration-300">
+                  <h3 className="text-xl font-medium text-[#0b1c26] group-hover:text-white mb-2 transition-colors duration-300">
                     Investor
                   </h3>
                   <p className="text-gray-600 group-hover:text-gray-200 transition-colors duration-300">
@@ -69,15 +69,15 @@ const Booking = () => {
               {/* Reserve Option */}
               <button
                 onClick={() => window.open('https://buy.stripe.com/5kQcN5a6b7FVgWY9PIcwg00', '_blank')}
-                className="group p-8 border-2 border-[#0a1f4a] bg-[#0a1f4a] hover:bg-white transition-all duration-300 rounded-none"
+                className="group p-8 border-2 border-[#0b1c26] bg-[#0b1c26] hover:bg-white transition-all duration-300 rounded-none"
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-white group-hover:bg-[#0a1f4a] mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
-                    <svg className="w-8 h-8 text-[#0a1f4a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-white group-hover:bg-[#0b1c26] mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
+                    <svg className="w-8 h-8 text-[#0b1c26] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-medium text-white group-hover:text-[#0a1f4a] mb-2 transition-colors duration-300">
+                  <h3 className="text-xl font-medium text-white group-hover:text-[#0b1c26] mb-2 transition-colors duration-300">
                     Reserve Now
                   </h3>
                   <p className="text-gray-200 group-hover:text-gray-600 transition-colors duration-300">
@@ -97,7 +97,7 @@ const Booking = () => {
                   href="https://calendly.com/your-calendly-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#0a1f4a] text-white font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 rounded-none"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#0b1c26] text-white font-medium hover:bg-[#0b1c26]/90 transition-colors duration-200 rounded-none"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -146,11 +146,11 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="text-[#0a1f4a] hover:text-gray-600 transition-colors mb-4 flex items-center"
+          className="text-[#0b1c26] hover:text-gray-600 transition-colors mb-4 flex items-center"
         >
           ← Back to selection
         </button>
-        <h2 className="text-3xl font-normal text-[#0a1f4a] mb-4">
+        <h2 className="text-3xl font-normal text-[#0b1c26] mb-4">
           Customer Inquiry
         </h2>
         <p className="text-gray-600">
@@ -168,7 +168,7 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
             />
           </div>
           <div>
@@ -179,7 +179,7 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
             />
           </div>
         </div>
@@ -191,7 +191,7 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
           />
         </div>
 
@@ -203,21 +203,21 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
             onChange={handleChange}
             rows={4}
             placeholder="Tell us about your project, specific requirements, or any questions you have..."
-            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors resize-none"
+            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors resize-none"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button
             type="submit"
-            className="bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+            className="bg-[#0b1c26] text-white py-4 px-8 font-medium hover:bg-[#0b1c26]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0b1c26] focus:ring-offset-2"
           >
             Submit Inquiry
           </button>
           <button
             type="button"
             onClick={() => window.open('https://buy.stripe.com/5kQcN5a6b7FVgWY9PIcwg00', '_blank')}
-            className="border-2 border-[#0a1f4a] text-[#0a1f4a] py-4 px-8 font-medium hover:bg-[#0a1f4a] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+            className="border-2 border-[#0b1c26] text-[#0b1c26] py-4 px-8 font-medium hover:bg-[#0b1c26] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0b1c26] focus:ring-offset-2"
           >
             Reserve Now
           </button>
@@ -255,11 +255,11 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="text-[#0a1f4a] hover:text-gray-600 transition-colors mb-4 flex items-center"
+          className="text-[#0b1c26] hover:text-gray-600 transition-colors mb-4 flex items-center"
         >
           ← Back to selection
         </button>
-        <h2 className="text-3xl font-normal text-[#0a1f4a] mb-4">
+        <h2 className="text-3xl font-normal text-[#0b1c26] mb-4">
           Investment Inquiry
         </h2>
         <p className="text-gray-600">
@@ -277,7 +277,7 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
             />
           </div>
           <div>
@@ -288,7 +288,7 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
             />
           </div>
         </div>
@@ -300,7 +300,7 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors"
           />
         </div>
 
@@ -312,14 +312,14 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
             onChange={handleChange}
             rows={4}
             placeholder="Tell us about your investment strategy, specific interests, or any questions you have..."
-            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0a1f4a] focus:ring-1 focus:ring-[#0a1f4a] outline-none transition-colors resize-none"
+            className="w-full px-4 py-3 border border-gray-300 focus:border-[#0b1c26] focus:ring-1 focus:ring-[#0b1c26] outline-none transition-colors resize-none"
           />
         </div>
 
         <div>
           <button
             type="submit"
-            className="bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+            className="bg-[#0b1c26] text-white py-4 px-8 font-medium hover:bg-[#0b1c26]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0b1c26] focus:ring-offset-2"
           >
             Submit Investment Inquiry
           </button>

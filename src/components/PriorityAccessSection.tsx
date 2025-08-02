@@ -64,7 +64,7 @@ export const PriorityAccessSection = () => {
         <button 
           onClick={handleReserve}
           disabled={isLoading}
-          className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0a1f4a] transition-all duration-300 ease-out border-2 border-[#0a1f4a] rounded-none shadow-lg sm:shadow-2xl hover:scale-105 hover:shadow-[#0a1f4a] hover:shadow-lg sm:hover:shadow-2xl active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none shadow-lg sm:shadow-2xl hover:scale-105 hover:shadow-[#0b1c26] hover:shadow-lg sm:hover:shadow-2xl active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0b1c26] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
           <span className="relative font-bold text-base sm:text-lg tracking-wider">

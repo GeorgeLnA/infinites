@@ -13,7 +13,7 @@ export const ContactCTASection = () => {
           {/* Content */}
           <div className="lg:col-span-2 text-center lg:text-left">
             <div className="space-y-3 lg:space-y-4">
-              <h2 className="text-[#0a1f4a] text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
+              <h2 className="text-[#0b1c26] text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
                 Book a call
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
@@ -26,7 +26,7 @@ export const ContactCTASection = () => {
           <div className="flex justify-center lg:justify-end">
             <a
               href="/booking"
-              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0a1f4a] transition-all duration-300 ease-out border-2 border-[#0a1f4a] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
+                              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
               aria-label="Book a call"
             >
               <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0b1c26] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
