@@ -13,21 +13,9 @@ export const OurProductSection = () => {
       className="w-full py-16 lg:py-32"
       style={{ backgroundColor: '#0b1c26' }}
       role="region"
-      aria-labelledby="products-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <header className="text-center mb-16">
-          <h2
-            id="products-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight mb-6"
-          >
-            Our Product Spa
-          </h2>
-          <p className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            Introducing our flagship spa solution designed to bring luxury wellness to any space
-          </p>
-        </header>
+
 
         {/* Single Product Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
