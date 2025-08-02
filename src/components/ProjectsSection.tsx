@@ -40,7 +40,7 @@ export const ProjectsSection = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center sm:flex-row gap-6 sm:gap-2 lg:gap-1 lg:gap-2 px-4 sm:px-6 lg:ml-8 lg:ml-16 lg:pr-8 lg:pr-16">
+      <div className="flex flex-col items-center sm:flex-row gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-6 lg:ml-8 lg:ml-16 lg:pr-8 lg:pr-16">
           {projects.map((project) => (
             <article
               key={project.id}
