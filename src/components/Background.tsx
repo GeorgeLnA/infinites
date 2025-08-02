@@ -3,6 +3,7 @@ import Hero from "./Hero";
 // import { AboutUsSection } from "./AboutUsSection";
 import { ProductCategoriesSection } from "./ConsultingSection";
 import { ContactSection } from "./ContactSection";
+import { OurProductSection } from "./OurProductSection";
 import { InstallAndUse } from "./InstallAndUse";
 import { ProjectsSection } from "./ProjectsSection";
 import { ContactCTASection } from "./MainPageCTASection";
@@ -18,6 +19,7 @@ export const Background = () => {
           <ContactSection />
                   {/* Spacer under second section */}
                   <div className="w-full h-4 bg-white"></div>
+                  <OurProductSection />
                         <InstallAndUse />
                   {/* Spacer under third section */}
                   <div className="w-full h-4 bg-white"></div>
