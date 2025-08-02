@@ -1,25 +1,32 @@
-import React from "react";
+import React from 'react';
 
-const GallerySection = () => {
+export const GallerySection = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfreh2brftpr16z4z1z.png",
-      alt: "Modular Spa Cabin in Forest Setting",
-      title: "Forest Retreat"
+      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfreh2brftpr16z4z1z.png",
+      title: "Winter Forest Retreat",
     },
     {
       id: 2,
-      src: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfsfwnsax6qx1vwv874.png",
-      alt: "Winter Modular Spa Installation",
-      title: "Winter Sanctuary"
+      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfsfwnsax6qx1vwv874.png",
+      title: "Alpine Sanctuary",
     },
     {
       id: 3,
-      src: "/20250802_0255_Modular Home Retreat_remix_01k1m7nyv6f099pvxfjnn723pc.png",
-      alt: "Modular Home Retreat Design",
-      title: "Modern Retreat"
-    }
+      image: "/20250802_0255_Modular Home Retreat_remix_01k1m7nyv6f099pvxfjnn723pc.png",
+      title: "Waterfall Wellness",
+    },
+    {
+      id: 4,
+      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvjeq28mttcxg3sp5mf.png",
+      title: "Tropical Paradise",
+    },
+    {
+      id: 5,
+      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvkfd6sytx38gq7ccqf.png",
+      title: "Mountain Haven",
+    },
   ];
 
   return (
@@ -31,37 +38,46 @@ const GallerySection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="text-center mb-16">
-          <h2 
+          <h2
             id="gallery-heading"
             className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0b1c26] leading-tight mb-6"
           >
-            Experience Our Designs
+            Gallery
           </h2>
           <p className="text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            Discover luxury modular spa systems designed for any environment, from serene forest settings to winter retreats
+            Discover our modular spa installations in breathtaking locations around the world
           </p>
         </header>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          {galleryImages.map((image) => (
-            <div key={image.id} className="group cursor-pointer">
-              <div className="relative w-full h-80 lg:h-96 bg-gray-200 overflow-hidden shadow-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {galleryImages.map((item, index) => (
+            <article
+              key={item.id}
+              className={`group cursor-pointer ${
+                index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+              } ${index === 1 ? 'lg:row-span-2' : ''}`}
+            >
+              <div className={`relative w-full overflow-hidden bg-gray-200 ${
+                index === 0 ? 'h-64 lg:h-80' : 
+                index === 1 ? 'h-64 lg:h-[400px]' : 
+                'h-64 lg:h-64'
+              }`}>
                 <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src={item.image}
+                  alt={`${item.title} - Infinite Spa installation`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-500" />
                 
-                {/* Image Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <h3 className="text-white font-medium text-lg lg:text-xl">
-                    {image.title}
+                {/* Overlay Title */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <h3 className="font-medium text-white text-lg lg:text-xl leading-tight">
+                    {item.title}
                   </h3>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
@@ -69,11 +85,11 @@ const GallerySection = () => {
         <div className="flex justify-center mt-16">
           <a
             href="/about-us"
-            className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
-            aria-label="View All Projects"
+            className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
+            aria-label="View Technology"
           >
             <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0b1c26] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-            <span className="relative font-bold text-lg tracking-wider">View All Projects</span>
+            <span className="relative font-bold text-lg tracking-wider">View Technology</span>
             <svg className="relative w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -83,5 +99,3 @@ const GallerySection = () => {
     </section>
   );
 };
-
-export default GallerySection; 
