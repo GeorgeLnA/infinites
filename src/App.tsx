@@ -1,11 +1,11 @@
-import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Background } from './components/Background';
 import OurStory from './pages/OurStory';
 import About from './pages/About';
-import AboutUs from './pages/AboutUs';
+import Technology from './pages/Technology';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 
@@ -24,7 +24,7 @@ function App() {
             } />
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/about" element={<About />} />
-            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/about-us" element={<Technology />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/booking" element={<Booking />} />
           </Routes>

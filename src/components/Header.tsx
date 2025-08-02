@@ -59,23 +59,18 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHero && isMainPage ? 'bg-transparent' : 'shadow-sm'}`} style={isHero && isMainPage ? {} : { backgroundColor: '#0a1f4a' }}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHero && isMainPage ? 'bg-transparent' : 'shadow-sm'}`} style={isHero && isMainPage ? {} : { backgroundColor: '#0b1c26' }}>
       <div className="w-full">
         <div className={`px-6 flex items-center justify-between transition-all duration-300 ${isHero && isMainPage ? 'py-0.5' : 'py-1'}`}>
           {/* Logo */}
-          <div className="relative pr-8">
-            <a href="/" className="block w-48 h-16 bg-transparent rounded flex items-center justify-center p-0 -ml-4 hover:opacity-80 transition-opacity">
+          <div className={`relative transition-opacity duration-500 ease-in-out ${isHero && isMainPage ? 'opacity-0' : 'opacity-100'}`}>
+            <a href="/" className="block w-48 h-16 bg-transparent rounded flex items-center justify-center p-0 hover:opacity-80">
               <img 
-                src={isHero && isMainPage ? "/logo.png" : "/logo.png"}
+                src="/newlogo.png"
                 alt="Infinite Spa Logo" 
                 className="w-full h-full object-contain" 
-                style={{ background: 'transparent', filter: isHero && isMainPage ? 'none' : 'brightness(0) invert(1)' }}
+                style={{ background: 'transparent' }}
               />
-            </a>
-            <a href="/" className="absolute inset-0 flex items-center justify-start pl-32 text-lg lg:text-xl text-white tracking-[0.1em] font-light whitespace-nowrap hover:opacity-80 transition-opacity"
-              style={{fontFamily: 'Orbitron, sans-serif'}}
-            >
-              INFINITE SPA
             </a>
           </div>
           
@@ -121,7 +116,7 @@ const Header = () => {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-[#0a1f4a] border-t border-white/10">
+          <div className="lg:hidden bg-[#0b1c26] border-t border-white/10">
             <div className="px-6 py-4 space-y-4">
               {/* Mobile Navigation Links */}
               <div className="space-y-3">

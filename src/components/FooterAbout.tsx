@@ -109,7 +109,7 @@ const FooterAbout = () => {
         <div className="mt-12 pt-8 border-t border-[#11388a]/20">
           <div className="flex justify-center">
             <img
-              src="/logo2.png"
+              src="/newlogo.png"
               alt="Infinite Spa Logo"
               className="h-12 object-contain"
             />

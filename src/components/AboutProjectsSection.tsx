@@ -5,12 +5,12 @@ export const AboutProjectsSection = () => {
     {
       id: 1,
       image: "/6_Photo%20-%201%20(2).jpg",
-      title: "Project V",
+      title: "SLEEPBOX",
     },
     {
       id: 2,
       image: "/6_Photo%20-%204%20(1).jpg",
-      title: "Project DM",
+      title: "Model 106",
     },
   ];
 

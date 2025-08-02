@@ -10,14 +10,14 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="border-t border-[#0A2239]" style={{ backgroundColor: '#0a1f4a' }}>
+    <footer id="contact" className="border-t border-[#0A2239]" style={{ backgroundColor: '#0b1c26' }}>
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
                                     <div className="relative mb-4">
-                          <div className="w-48 h-16 -ml-24 lg:-ml-20">
+                          <div className="w-48 h-16">
                             <img 
                               src="/logo.png"
                               alt="Infinite Spa Logo" 
@@ -25,12 +25,6 @@ const Footer = () => {
                               style={{ filter: 'brightness(0) invert(1)' }}
                             />
                           </div>
-                          <h2 
-                            className="absolute inset-0 flex items-center justify-start pl-12 lg:pl-16 text-lg lg:text-xl text-white tracking-[0.1em] font-light pointer-events-none whitespace-nowrap"
-                            style={{fontFamily: 'Orbitron, sans-serif'}}
-                          >
-                            INFINITE SPA
-                          </h2>
                         </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-md">
               We believe in providing ubiquitous access to the world's most exceptional wellness amenities, wherever life may find you.

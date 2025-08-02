@@ -13,22 +13,8 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-[#0a1f4a] text-white py-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <img src="/logo.png" alt="Infinite Spa" className="h-8 w-auto filter brightness-0 invert" />
-              <h1 className="text-2xl font-light">Booking</h1>
-            </div>
-            <a href="/" className="text-white hover:text-gray-200 transition-colors">
-              ← Back to Home
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="pt-16">
+        <div className="max-w-4xl mx-auto px-6 py-16">
         {!userType ? (
           // User Type Selection
           <div className="text-center">
@@ -39,7 +25,7 @@ const Booking = () => {
               Tell us about yourself so we can provide the most relevant information and assistance.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {/* Customer Option */}
               <button
                 onClick={() => handleUserTypeSelect('customer')}
@@ -79,6 +65,26 @@ const Booking = () => {
                   </p>
                 </div>
               </button>
+
+              {/* Reserve Option */}
+              <button
+                onClick={() => window.open('https://buy.stripe.com/5kQcN5a6b7FVgWY9PIcwg00', '_blank')}
+                className="group p-8 border-2 border-[#0a1f4a] bg-[#0a1f4a] hover:bg-white transition-all duration-300 rounded-none"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white group-hover:bg-[#0a1f4a] mx-auto mb-4 flex items-center justify-center transition-colors duration-300">
+                    <svg className="w-8 h-8 text-[#0a1f4a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-medium text-white group-hover:text-[#0a1f4a] mb-2 transition-colors duration-300">
+                    Reserve Now
+                  </h3>
+                  <p className="text-gray-200 group-hover:text-gray-600 transition-colors duration-300">
+                    Secure your spa reservation immediately
+                  </p>
+                </div>
+              </button>
             </div>
 
             {/* Schedule a Call Section */}
@@ -106,6 +112,7 @@ const Booking = () => {
         ) : (
           <InvestorForm onBack={handleBackToSelection} />
         )}
+        </div>
       </div>
     </div>
   );
@@ -200,12 +207,21 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
-        >
-          Submit Inquiry
-        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button
+            type="submit"
+            className="bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+          >
+            Submit Inquiry
+          </button>
+          <button
+            type="button"
+            onClick={() => window.open('https://buy.stripe.com/5kQcN5a6b7FVgWY9PIcwg00', '_blank')}
+            className="border-2 border-[#0a1f4a] text-[#0a1f4a] py-4 px-8 font-medium hover:bg-[#0a1f4a] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+          >
+            Reserve Now
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -300,12 +316,14 @@ const InvestorForm = ({ onBack }: { onBack: () => void }) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
-        >
-          Submit Investment Inquiry
-        </button>
+        <div>
+          <button
+            type="submit"
+            className="bg-[#0a1f4a] text-white py-4 px-8 font-medium hover:bg-[#0a1f4a]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0a1f4a] focus:ring-offset-2"
+          >
+            Submit Investment Inquiry
+          </button>
+        </div>
       </form>
     </div>
   );

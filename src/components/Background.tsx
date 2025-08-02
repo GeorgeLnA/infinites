@@ -13,11 +13,11 @@ export const Background = () => {
   return (
             <div className="relative w-full overflow-x-hidden">
           <Hero />
-          {/* Spacer for more space after hero */}
-          <div className="w-full h-0 lg:h-24 bg-white"></div>
+          {/* Spacer for less space after hero */}
+          <div className="w-full h-0 lg:h-8 bg-white"></div>
           <ContactSection />
                   {/* Spacer under second section */}
-                  <div className="w-full h-8 bg-white"></div>
+                  <div className="w-full h-4 bg-white"></div>
                         <InstallAndUse />
                   {/* Spacer under third section */}
                   <div className="w-full h-4 bg-white"></div>

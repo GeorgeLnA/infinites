@@ -1,112 +1,176 @@
 import React from 'react';
-import { Sparkles, Globe, Users, Award } from 'lucide-react';
+import { MapPin, Building, Users, Award } from 'lucide-react';
 import Footer from '../components/Footer';
 
-const OurStory = () => (
-  <div className="min-h-screen bg-white overflow-x-hidden">
-    {/* Mission Section - with top padding for fixed header */}
-    <section className="pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl lg:text-7xl font-normal text-[#0d0c09] leading-tight mb-8">Our Story</h1>
-          <p className="text-xl lg:text-2xl text-[#0d0c09] font-light leading-relaxed max-w-3xl mx-auto" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            Born from a vision to democratize luxury wellness experiences and make them accessible wherever life may find you.
-          </p>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl lg:text-5xl font-normal text-[#0d0c09] leading-tight mb-8">Our Mission</h2>
-            <div className="space-y-6">
-              <p className="text-[#0d0c09] text-lg font-light leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif', fontSize: '1.75rem'}}>
-                We believe in providing ubiquitous access to the world's most exceptional wellness amenities, wherever life may find you.
+const OurStory = () => {
+  const developers = [
+    {
+      name: "Misha Krymov",
+      role: "Product",
+      image: "/1516866626270.jpg",
+      experience: "3x Founder, Award-winning architect, founder of a micro-hotel brand",
+      bestBuilds: [
+        "Sleepbox micro-hotel installations",
+        "Award-winning architectural projects", 
+        "Innovative modular hospitality solutions"
+      ],
+      bestCompanies: [
+        "MIT",
+        "Sleepbox",
+        "Various hospitality brands"
+      ]
+    },
+    {
+      name: "Matt Boney",
+      role: "CEO", 
+      image: "/1736995044237.jpg",
+      experience: "2X Founder, $3.5M in Daypass Sales, 12 years in hospitality",
+      bestBuilds: [
+        "Daypass platform success",
+        "Hospitality technology solutions",
+        "Revenue generation systems"
+      ],
+      bestCompanies: [
+        "Brown University",
+        "Daycation",
+        "Hospitality tech ventures"
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      <div className="pt-16">
+        {/* How It All Happened Section */}
+        <section className="w-full py-16 lg:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0b1c26] leading-tight mb-6">
+                How It All Happened
+              </h2>
+              <p className="text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                The journey that transformed luxury wellness accessibility forever
               </p>
-              <p className="text-[#0d0c09] text-lg font-light leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                Infinite Spa was born from a desire to dissolve the boundaries around luxury wellness, making it available to anyone, anywhere. By opening the door to world-class experiences, we aim to uplift mood, nurture health, and extend the arc of human longevity.
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+              <div>
+                <h3 className="text-xl lg:text-2xl font-medium text-[#0b1c26] mb-6">The Vision</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  It started with a simple observation: luxury wellness experiences were confined to fixed locations, 
+                  limiting access and flexibility. In 2020, two engineers with backgrounds in hospitality technology 
+                  and smart automation saw an opportunity to revolutionize the industry.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  The idea was ambitious yet simple - create modular, transportable spa solutions that could deliver 
+                  5-star wellness experiences anywhere, without compromising on luxury or functionality.
+                </p>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/6_Photo - 3 (2).jpg" 
+                  alt="Infinite Spa Vision" 
+                  className="w-full h-96 object-cover shadow-lg"
+                />
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="relative lg:order-1">
+                <img 
+                  src="/6_Photo - 2 (2).jpg" 
+                  alt="Development Process" 
+                  className="w-full h-96 object-cover shadow-lg"
+                />
+              </div>
+              <div className="lg:order-2">
+                <h3 className="text-xl lg:text-2xl font-medium text-[#0b1c26] mb-6">The Development</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  Three years of intensive research and development followed. Working with luxury hotels, 
+                  private clients, and wellness experts, we refined every detail - from advanced water 
+                  purification systems to AI-powered climate control.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  Our breakthrough came with the development of neural water control technology and 
+                  predictive maintenance systems, allowing us to deliver unprecedented reliability 
+                  and user experience in a mobile format.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The Team Section */}
+        <section 
+          className="w-full py-16 lg:py-32"
+          style={{ backgroundColor: '#0b1c26' }}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight mb-6">
+                The Team
+              </h2>
+              <p className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                Meet the visionaries behind Infinite Spa
               </p>
             </div>
-          </div>
-          <div className="relative">
-            <img 
-              src="/6_Photo - 3 (2).jpg" 
-              alt="Wellness Experience" 
-              className="w-full h-96 object-cover "
-            />
-          </div>
-        </div>
-      </div>
-    </section>
 
-    {/* Values Section */}
-    <section className="py-32 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-normal text-[#0d0c09] leading-tight mb-6">What Drives Us</h2>
-          <p className="text-xl text-[#0d0c09] font-light max-w-3xl mx-auto" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            Our core values shape every decision we make and every spa we create
-          </p>
-        </div>
+            <div className="grid lg:grid-cols-2 gap-16">
+              {developers.map((developer, index) => (
+                <div key={index} className="bg-white p-8 shadow-lg">
+                  <div className="flex flex-col items-center text-center mb-8">
+                    <div className="w-32 h-32 bg-gray-200 overflow-hidden mb-6">
+                      <img
+                        src={developer.image}
+                        alt={developer.name}
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: 'center top' }}
+                      />
+                    </div>
+                    <h3 className="text-2xl font-medium text-[#0b1c26] mb-2">{developer.name}</h3>
+                    <p className="text-gray-600 text-lg mb-4">{developer.role}</p>
+                    <p className="text-[#0b1c26] font-medium">{developer.experience}</p>
+                  </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white  p-8 text-center hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 bg-[#0a1f4a]  flex items-center justify-center mx-auto mb-6">
-              <Globe className="w-8 h-8 text-white" />
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-lg font-medium text-[#0b1c26] mb-3 flex items-center">
+                        <Building className="w-5 h-5 mr-2" />
+                        Best Builds
+                      </h4>
+                      <ul className="space-y-2">
+                        {developer.bestBuilds.map((build, idx) => (
+                          <li key={idx} className="text-gray-600 pl-4 border-l-2 border-[#0b1c26]">
+                            {build}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-lg font-medium text-[#0b1c26] mb-3 flex items-center">
+                        <Award className="w-5 h-5 mr-2" />
+                        Best Experience
+                      </h4>
+                      <ul className="space-y-2">
+                        {developer.bestCompanies.map((company, idx) => (
+                          <li key={idx} className="text-gray-600 pl-4 border-l-2 border-[#0b1c26]">
+                            {company}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h3 className="text-2xl font-normal text-[#0d0c09] mb-4">Global Accessibility</h3>
-            <p className="text-[#0d0c09] font-light leading-relaxed">
-              Breaking down barriers to luxury wellness by bringing premium spa experiences 
-              to any location, anywhere in the world.
-            </p>
           </div>
-
-          <div className="bg-white  p-8 text-center hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 bg-[#0a1f4a]  flex items-center justify-center mx-auto mb-6">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-normal text-[#0d0c09] mb-4">Community Focus</h3>
-            <p className="text-[#0d0c09] font-light leading-relaxed">
-              Creating spaces that bring people together, fostering wellness communities 
-              and meaningful connections through shared experiences.
-            </p>
-          </div>
-
-          <div className="bg-white  p-8 text-center hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 bg-[#0a1f4a]  flex items-center justify-center mx-auto mb-6">
-              <Award className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-normal text-[#0d0c09] mb-4">Excellence</h3>
-            <p className="text-[#0d0c09] font-light leading-relaxed">
-              Committed to the highest standards in design, installation, and service 
-              to deliver exceptional wellness experiences every time.
-            </p>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
 
-    {/* Vision Section - matching catalogue section style */}
-    <section className="py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        <div className=" overflow-hidden" style={{ background: '#0a1f4a' }}>
-          <div className="p-12 lg:p-16 text-center text-white">
-            <h2 className="text-4xl lg:text-5xl font-normal mb-8 leading-tight">The Future of Wellness</h2>
-            <p className="text-xl font-light max-w-4xl mx-auto leading-relaxed mb-8" style={{fontFamily: 'Montserrat, sans-serif'}}>
-              Infinite Spa is dedicated to making luxury wellness experiences available to everyone, 
-              everywhere. We're not just building spas – we're creating a movement that transforms 
-              how people experience wellness in their daily lives.
-            </p>
-            <p className="text-lg font-light opacity-90 max-w-3xl mx-auto leading-relaxed">
-              From private residences to luxury hotels, from corporate wellness centers to unique 
-              venues, our innovative mobile spa solutions adapt to any space and exceed every expectation. 
-              Join us in making wellness truly infinite.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <Footer />
+    </div>
+  );
+};
 
-    <Footer />
-  </div>
-);
-
-export default OurStory; 
+export default OurStory;

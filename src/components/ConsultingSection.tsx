@@ -97,7 +97,7 @@ export const ProductCategoriesSection = () => {
   return (
     <section
       className="w-full py-16 lg:py-32"
-      style={{ backgroundColor: '#0a1f4a' }}
+      style={{ backgroundColor: '#0b1c26' }}
       role="region"
       aria-labelledby="product-categories-heading"
     >
@@ -189,9 +189,7 @@ export const ProductCategoriesSection = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500" />
-                <div className="absolute top-2 left-2 lg:top-4 lg:left-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs lg:text-sm">
-                  {category.title}
-                </div>
+
               </div>
 
 

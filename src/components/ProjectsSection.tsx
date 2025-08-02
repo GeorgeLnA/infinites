@@ -1,23 +1,23 @@
-import React from "react";
+
 
 export const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      image: "/6_Photo%20-%201%20(2).jpg",
-      title: "Project V",
+      image: "/DSC_4358.jpg",
+      title: "SLEEPBOX",
     },
     {
       id: 2,
-      image: "/6_Photo%20-%204%20(1).jpg",
-      title: "Project DM",
+      image: "/IMG_0288.webp",
+      title: "Model 106",
     },
   ];
 
   return (
     <section
       className="w-full py-16 lg:py-32"
-      style={{ backgroundColor: '#0a1f4a' }}
+      style={{ backgroundColor: '#0b1c26' }}
       role="region"
       aria-labelledby="projects-heading"
     >

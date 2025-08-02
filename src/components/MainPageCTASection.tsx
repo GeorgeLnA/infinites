@@ -26,10 +26,10 @@ export const ContactCTASection = () => {
           <div className="flex justify-center lg:justify-end">
             <a
               href="/booking"
-              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0a1f4a] transition-all duration-300 ease-out border-2 border-[#0a1f4a] rounded-none shadow-lg sm:shadow-2xl hover:scale-105 hover:shadow-[#0a1f4a] hover:shadow-lg sm:hover:shadow-2xl active:scale-95 bg-transparent hover:bg-[#0a1f4a] hover:text-white"
+              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0a1f4a] transition-all duration-300 ease-out border-2 border-[#0a1f4a] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
               aria-label="Book a call"
             >
-              <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0a1f4a] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+              <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0b1c26] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
               <span className="relative font-bold text-base sm:text-lg tracking-wider">Book a call</span>
               <svg className="relative w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

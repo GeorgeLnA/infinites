@@ -19,14 +19,14 @@ export const InstallAndUse = () => {
           <header className="mb-6 lg:mb-0 text-center lg:text-left">
             <h2
               id="install-use-heading"
-              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0a1f4a] leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0b1c26] leading-tight"
             >
               Easy to Install
             </h2>
           </header>
 
           <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-[#0a1f4a] text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
+            <p className="text-[#0b1c26] text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
               Simple setup process
             </p>
           </div>
@@ -100,14 +100,14 @@ export const InstallAndUse = () => {
                   {/* Clean numbered circle */}
                   <div className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 border-2 flex items-center justify-center text-sm sm:text-base lg:text-lg font-medium transition-all duration-600 ease-out ${
                     isHovered 
-                      ? 'bg-[#0a1f4a] text-white border-[#0a1f4a] scale-105' 
-                      : 'bg-white text-[#0a1f4a] border-[#0a1f4a]'
+                      ? 'bg-[#0b1c26] text-white border-[#0b1c26] scale-105' 
+                      : 'bg-white text-[#0b1c26] border-[#0b1c26]'
                   }`}>
                     {index + 1}
                   </div>
                   
                   {/* Step text */}
-                  <div className={`text-sm sm:text-base lg:text-lg font-normal text-[#0a1f4a] leading-tight flex-1 transition-all duration-600 ease-out ${
+                  <div className={`text-sm sm:text-base lg:text-lg font-normal text-[#0b1c26] leading-tight flex-1 transition-all duration-600 ease-out ${
                     isHovered 
                       ? 'sm:text-lg lg:text-xl font-medium' 
                       : ''

@@ -201,12 +201,7 @@ export const AboutUsSection = () => {
           );
         })}
         
-        {/* Status indicator */}
-        {isSticky && (
-          <div className="absolute top-8 right-8 z-10 text-black text-sm">
-            Slide {currentPage}/{numOfPages}
-          </div>
-        )}
+
       </div>
 
       {/* Page indicator */}
