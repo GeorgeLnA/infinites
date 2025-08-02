@@ -1,26 +1,12 @@
 import React from "react";
 
 export const OurProductSection = () => {
-  const products = [
-    {
-      id: 1,
-      image: "/6_Photo - 1 (2).jpg",
-      title: "Premium Spa Collection",
-      description: "Luxury wellness experiences designed for discerning clients seeking ultimate relaxation and rejuvenation."
-    },
-    {
-      id: 2,
-      image: "/6_Photo - 2 (2).jpg", 
-      title: "Modular Spa Systems",
-      description: "Innovative, space-efficient designs that adapt to any environment while maintaining premium quality."
-    },
-    {
-      id: 3,
-      image: "/6_Photo - 3 (2).jpg",
-      title: "Custom Installations",
-      description: "Bespoke wellness solutions tailored to your specific requirements and architectural vision."
-    },
-  ];
+  const product = {
+    id: 1,
+    image: "/6_Photo - 1 (2).jpg",
+    title: "Infinite Spa System",
+    description: "Our flagship modular spa solution combines luxury wellness with innovative design. Engineered for easy installation and maintenance, this premium system adapts to any space while delivering an uncompromising spa experience."
+  };
 
   return (
     <section
@@ -36,39 +22,58 @@ export const OurProductSection = () => {
             id="products-heading"
             className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight mb-6"
           >
-            Our Product Spas
+            Our Product Spa
           </h2>
           <p className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
-            Experience our range of premium spa solutions designed to bring luxury wellness to any space
+            Introducing our flagship spa solution designed to bring luxury wellness to any space
           </p>
         </header>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          {products.map((product) => (
-            <article
-              key={product.id}
-              className="group cursor-pointer"
-            >
-              <div className="relative w-full h-80 lg:h-96 bg-gray-200 overflow-hidden mb-6 shadow-lg">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        {/* Single Product Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
+          {/* Product Image */}
+          <div className="group cursor-pointer order-2 lg:order-1">
+            <div className="relative w-full h-80 lg:h-96 bg-gray-200 overflow-hidden shadow-lg">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+          </div>
+          
+          {/* Product Details */}
+          <div className="text-center lg:text-left order-1 lg:order-2">
+            <h3 className="text-2xl lg:text-3xl font-medium text-white mb-6 leading-tight">
+              {product.title}
+            </h3>
+            <p className="text-white/80 leading-relaxed text-lg lg:text-xl mb-8" style={{fontFamily: 'Montserrat, sans-serif'}}>
+              {product.description}
+            </p>
+            
+            {/* Features List */}
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center justify-center lg:justify-start text-white/70">
+                <svg className="w-5 h-5 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Easy Installation & Setup</span>
               </div>
-              
-              <div className="text-center lg:text-left">
-                <h3 className="text-xl lg:text-2xl font-medium text-white mb-4 leading-tight">
-                  {product.title}
-                </h3>
-                <p className="text-white/70 leading-relaxed text-base" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  {product.description}
-                </p>
+              <div className="flex items-center justify-center lg:justify-start text-white/70">
+                <svg className="w-5 h-5 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Premium Materials & Design</span>
               </div>
-            </article>
-          ))}
+              <div className="flex items-center justify-center lg:justify-start text-white/70">
+                <svg className="w-5 h-5 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Modular & Adaptable</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* CTA Button */}
