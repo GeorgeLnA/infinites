@@ -5,7 +5,6 @@ import { ProductCategoriesSection } from "./ConsultingSection";
 import { ContactSection } from "./ContactSection";
 import { OurProductSection } from "./OurProductSection";
 import { InstallAndUse } from "./InstallAndUse";
-import { GallerySection } from "./GallerySection";
 import { ProjectsSection } from "./ProjectsSection";
 import { ContactCTASection } from "./MainPageCTASection";
 import Benefits from "./Benefits";
@@ -22,7 +21,6 @@ export const Background = () => {
                   <div className="w-full h-4 bg-white"></div>
                   <OurProductSection />
                         <InstallAndUse />
-                        <GallerySection />
                   {/* Spacer under third section */}
                   <div className="w-full h-4 bg-white"></div>
                   <ProductCategoriesSection />
