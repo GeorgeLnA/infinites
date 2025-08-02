@@ -3,7 +3,7 @@ import React from "react";
 export const OurProductSection = () => {
   const product = {
     id: 1,
-    image: "/6_Photo - 1 (2).jpg",
+    image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfreh2brftpr16z4z1z.png",
     title: "Infinite Spa System",
     description: "Our flagship modular spa solution combines luxury wellness with innovative design. Engineered for easy installation and maintenance, this premium system adapts to any space while delivering an uncompromising spa experience."
   };
