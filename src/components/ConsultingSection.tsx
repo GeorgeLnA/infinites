@@ -58,33 +58,33 @@ export const ProductCategoriesSection = () => {
   const productCategories = [
     {
       id: 1,
-      title: "Floor tiles",
-      image: "/6_Photo - 2 (2).jpg",
-      titleParts: ["Floor", "tiles"],
+      title: "SLEEPBOX",
+      image: "/6_Photo - 1 (2).jpg",
+      titleParts: ["SLEEPBOX"],
     },
     {
       id: 2,
-      title: "XXL tiles",
-      image: "/6_Photo - 1 (2).jpg",
-      titleParts: ["XXL", "tiles"],
+      title: "Alpine Sanctuary",
+      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfsfwnsax6qx1vwv874.png",
+      titleParts: ["Alpine", "Sanctuary"],
     },
     {
       id: 3,
-      title: "Bathroom tiles",
-      image: "/6_Photo - 3 (2).jpg",
-      titleParts: ["Bathroom", "tiles"],
+      title: "Waterfall Wellness",
+      image: "/20250802_0255_Modular Home Retreat_remix_01k1m7nyv6f099pvxfjnn723pc.png",
+      titleParts: ["Waterfall", "Wellness"],
     },
     {
       id: 4,
-      title: "Kitchen tiles",
-      image: "/6_Photo - 4 (1).jpg",
-      titleParts: ["Kitchen", "tiles"],
+      title: "Tropical Paradise",
+      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvjeq28mttcxg3sp5mf.png",
+      titleParts: ["Tropical", "Paradise"],
     },
     {
       id: 5,
-      title: "Outdoor tiles",
-      image: "/6_Photo - 1 (2).jpg",
-      titleParts: ["Outdoor", "tiles"],
+      title: "Mountain Haven",
+      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvkfd6sytx38gq7ccqf.png",
+      titleParts: ["Mountain", "Haven"],
     },
   ];
 
