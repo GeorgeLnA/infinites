@@ -188,15 +188,12 @@ export const ProductCategoriesSection = () => {
                     muted
                     playsInline
                     className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    preload="none"
                   />
                 ) : (
                   <img
                     src={category.image}
                     alt={category.title}
                     className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
                   />
                 )}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500" />

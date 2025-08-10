@@ -22,8 +22,6 @@ const Footer = () => {
                               src="/newlogo.png"
                               alt="Infinite Spa Logo" 
                               className="w-full h-full object-contain" 
-                              loading="lazy"
-                              decoding="async"
                             />
                           </div>
                         </div>
