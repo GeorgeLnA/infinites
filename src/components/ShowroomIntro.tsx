@@ -18,7 +18,6 @@ const ShowroomIntro = () => {
               className="w-full h-full object-cover"
               width="512" 
               height="512"
-              
             />
           </div>
 
