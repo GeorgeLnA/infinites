@@ -38,10 +38,10 @@ const Booking = () => {
                     </svg>
                   </div>
                   <h3 className="text-xl font-medium text-[#0b1c26] group-hover:text-white mb-2 transition-colors duration-300">
-                    Customer
+                    Business
                   </h3>
                   <p className="text-gray-600 group-hover:text-gray-200 transition-colors duration-300">
-                    I want to install a spa at my property
+                    I want to install a spa at my business property
                   </p>
                 </div>
               </button>
@@ -151,10 +151,10 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
           ← Back to selection
         </button>
         <h2 className="text-3xl font-normal text-[#0b1c26] mb-4">
-          Customer Inquiry
+          Business Inquiry
         </h2>
         <p className="text-gray-600">
-          Tell us about your spa installation project
+          Tell us about your business spa installation project
         </p>
       </div>
 
@@ -212,7 +212,7 @@ const CustomerForm = ({ onBack }: { onBack: () => void }) => {
             type="submit"
             className="bg-[#0b1c26] text-white py-4 px-8 font-medium hover:bg-[#0b1c26]/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#0b1c26] focus:ring-offset-2"
           >
-            Submit Inquiry
+            Submit Business Inquiry
           </button>
           <button
             type="button"

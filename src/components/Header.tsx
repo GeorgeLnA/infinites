@@ -59,11 +59,11 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHero && isMainPage ? 'bg-transparent' : 'shadow-sm'}`} style={isHero && isMainPage ? {} : { backgroundColor: '#0b1c26' }}>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm" style={{ backgroundColor: '#0b1c26' }}>
       <div className="w-full">
-        <div className={`px-6 flex items-center justify-between transition-all duration-300 ${isHero && isMainPage ? 'py-0.5' : 'py-1'}`}>
+        <div className="px-6 flex items-center justify-between transition-all duration-300 py-1">
           {/* Logo */}
-          <div className={`relative transition-opacity duration-500 ease-in-out ${isHero && isMainPage ? 'opacity-0' : 'opacity-100'}`}>
+          <div className="relative transition-opacity duration-500 ease-in-out opacity-100">
             <a href="/" className="block w-48 h-16 bg-transparent rounded flex items-center justify-center p-0 hover:opacity-80">
               <img 
                 src="/newlogo.png"
@@ -79,7 +79,7 @@ const Header = () => {
             <div className="flex items-center space-x-8">
               <a href="/" className="font-medium text-white hover:text-gray-200 transition-colors">Home</a>
               <a href="/our-story" className="font-medium text-white hover:text-gray-200 transition-colors">Our Story</a>
-              <a href="/about-us" className="font-medium text-white hover:text-gray-200 transition-colors">Technology</a>
+
               <a href="/contact" className="font-medium text-white hover:text-gray-200 transition-colors">Contact us</a>
             </div>
           </nav>
@@ -134,13 +134,7 @@ const Header = () => {
                 >
                   Our Story
                 </a>
-                <a 
-                  href="/about-us" 
-                  className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"
-                  onClick={closeMobileMenu}
-                >
-                  Technology
-                </a>
+
                 <a 
                   href="/contact" 
                   className="block text-white hover:text-gray-200 transition-colors py-2 text-lg"

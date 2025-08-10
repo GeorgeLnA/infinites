@@ -41,18 +41,11 @@ const OurStory = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <div className="pt-16">
+
+
         {/* How It All Happened Section */}
         <section className="w-full py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0b1c26] leading-tight mb-6">
-                How It All Happened
-              </h2>
-              <p className="text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                The journey that transformed luxury wellness accessibility forever
-              </p>
-            </div>
-
             <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
               <div>
                 <h3 className="text-xl lg:text-2xl font-medium text-[#0b1c26] mb-6">The Vision</h3>

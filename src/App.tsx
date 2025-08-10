@@ -9,6 +9,7 @@ import OurStory from './pages/OurStory';
 import About from './pages/About';
 import Technology from './pages/Technology';
 import Contact from './pages/Contact';
+import Confirmation from './pages/Confirmation';
 import Booking from './pages/Booking';
 
 function ScrollToTop() {
@@ -41,6 +42,7 @@ function App() {
               <Route path="/about-us" element={<Technology />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
           </main>
         </div>

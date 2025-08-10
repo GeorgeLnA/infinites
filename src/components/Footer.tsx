@@ -19,10 +19,9 @@ const Footer = () => {
                                     <div className="relative mb-4">
                           <div className="w-48 h-16">
                             <img 
-                              src="/logo.png"
+                              src="/newlogo.png"
                               alt="Infinite Spa Logo" 
                               className="w-full h-full object-contain" 
-                              style={{ filter: 'brightness(0) invert(1)' }}
                             />
                           </div>
                         </div>
