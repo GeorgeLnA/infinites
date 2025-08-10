@@ -44,7 +44,6 @@ export const InstallAndUse = () => {
             loop
             muted
             playsInline
-            preload="none"
             poster="/6_Photo - 4 (1).jpg"
           />
         </div>
