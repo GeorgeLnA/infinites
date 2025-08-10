@@ -83,6 +83,8 @@ export const MeetUs = ({
                   src={member.image}
                   alt={member.name}
                   className="w-64 h-64 object-cover  shadow-lg"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="text-center">

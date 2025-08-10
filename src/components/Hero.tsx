@@ -134,6 +134,9 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover z-0"
         src="/6_Photo - 1 (2).jpg"
         alt="Infinite Spa luxury wellness experience"
+        loading="eager"
+        fetchPriority="high"
+        decoding="sync"
       />
 
       {/* Mobile Content Overlay (separate layout) */}

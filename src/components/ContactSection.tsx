@@ -35,6 +35,8 @@ export const ContactSection = () => {
                 src="/20250801_2322_Fashionable Business Team_simple_compose_01k1kvgawcfmgackxybhv7v7af.png"
                 alt="Infinite Spa team"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
                 style={{ objectPosition: 'center top' }}
               />
             </div>
@@ -78,6 +80,8 @@ export const ContactSection = () => {
                 src="/20250801_2322_Fashionable Business Team_simple_compose_01k1kvgawcfmgackxybhv7v7af.png"
                 alt="Infinite Spa team"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
                 style={{ objectPosition: 'center top' }}
               />
             </div>

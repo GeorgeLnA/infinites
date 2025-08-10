@@ -69,6 +69,9 @@ const Header = () => {
                 src="/newlogo.png"
                 alt="Infinite Spa Logo" 
                 className="w-full h-full object-contain" 
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
                 style={{ background: 'transparent' }}
               />
             </a>

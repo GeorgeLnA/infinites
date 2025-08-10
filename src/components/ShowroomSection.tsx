@@ -17,6 +17,8 @@ const ShowroomSection = () => {
                 src="/6_Photo - 2 (2).jpg" 
                 alt="Spa showroom with circular table and modern design"
                 className="w-full aspect-[4/3] object-cover "
+                loading="lazy"
+                decoding="async"
               />
             </div>
             
