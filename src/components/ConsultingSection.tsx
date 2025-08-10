@@ -8,15 +8,14 @@ export const ProductCategoriesSection = () => {
   const [scrollLeft, setScrollLeft] = React.useState(0);
 
   const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const itemWidth = container.scrollWidth / productCategories.length;
-      const scrollPosition = itemWidth * index;
-      
-      container.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      });
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Use the actual item's offset rather than assuming equal widths
+    const items = container.querySelectorAll<HTMLElement>('[data-gallery-item="true"]');
+    const target = items[index];
+    if (target) {
+      container.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
       setCurrentIndex(index);
     }
   };
@@ -57,6 +56,12 @@ export const ProductCategoriesSection = () => {
 
   const productCategories = [
     {
+      id: 0,
+      title: "INFINITESPA Experience",
+      video: "/hero.mp4",
+      titleParts: ["INFINITESPA", "Experience"],
+    },
+    {
       id: 1,
       title: "SLEEPBOX",
       image: "/6_Photo - 1 (2).jpg",
@@ -90,64 +95,61 @@ export const ProductCategoriesSection = () => {
 
   return (
     <section
-      className="w-full py-16 lg:py-32"
+      className="w-full py-16 lg:py-24"
       style={{ backgroundColor: '#0b1c26' }}
       role="region"
       aria-labelledby="product-categories-heading"
     >
-      <div className="px-4 sm:px-6 lg:pr-16 lg:pr-24 mb-6 lg:mb-8 lg:ml-8 lg:ml-16">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-          <header className="mb-6 lg:mb-0 text-center lg:text-left">
+      <div className="ml-4 sm:ml-6 lg:ml-16 pr-4 sm:pr-6 lg:pr-16">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8 lg:mb-12">
+          <header className="text-left max-w-3xl">
             <h2
               id="product-categories-heading"
-              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-tight"
             >
-              Gallery
+                              We Reimagined Luxury Spas
             </h2>
+            <p className="mt-3 text-white/80 text-base sm:text-lg">
+              Making Them Modular, Mobile, & Suitable For Any Environment.
+            </p>
           </header>
 
-          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-white text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
-              Discover our range
-            </p>
-
-            <nav
-              className="flex gap-4 justify-center lg:justify-start"
-              aria-label="Product navigation"
+          <nav
+            className="flex gap-4 justify-start lg:justify-end"
+            aria-label="Product navigation"
+          >
+            <button
+              className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
+                currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
+              }`}
+              aria-label="Previous products"
+              type="button"
+              onClick={scrollPrev}
+              disabled={currentIndex === 0}
             >
-              <button
-                className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
-                  currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
-                }`}
-                aria-label="Previous products"
-                type="button"
-                onClick={scrollPrev}
-                disabled={currentIndex === 0}
-              >
-                <div className="h-6 lg:h-8 flex items-center justify-center">
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
-                    <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  </svg>
-                </div>
-              </button>
+              <div className="h-6 lg:h-8 flex items-center justify-center">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
+                  <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+            </button>
 
-              <button
-                className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
-                  currentIndex === productCategories.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
-                }`}
-                aria-label="Next products"
-                type="button"
-                onClick={scrollNext}
-                disabled={currentIndex === productCategories.length - 1}
-              >
-                <div className="h-6 lg:h-8 flex items-center justify-center">
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
-                    <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  </svg>
-                </div>
-              </button>
-            </nav>
-          </div>
+            <button
+              className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
+                currentIndex === productCategories.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
+              }`}
+              aria-label="Next products"
+              type="button"
+              onClick={scrollNext}
+              disabled={currentIndex === productCategories.length - 1}
+            >
+              <div className="h-6 lg:h-8 flex items-center justify-center">
+                <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
+                  <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+            </button>
+          </nav>
         </div>
       </div>
 
@@ -165,7 +167,7 @@ export const ProductCategoriesSection = () => {
               }}
             >
         <div
-          className="flex gap-1 lg:gap-2 ml-4 sm:ml-6 lg:ml-8 lg:ml-16 pb-4"
+          className="flex gap-1 lg:gap-2 ml-4 sm:ml-6 lg:ml-16 pb-4"
           role="list"
           aria-label="Product categories"
           style={{ minWidth: 'max-content' }}
@@ -173,15 +175,27 @@ export const ProductCategoriesSection = () => {
           {productCategories.map((category, index) => (
             <article
               key={category.id}
-              className="w-[280px] sm:w-[320px] lg:w-[400px] flex-shrink-0"
+              data-gallery-item="true"
+              className={`${index === 0 ? 'lg:w-[760px]' : 'lg:w-[400px]'} w-[260px] sm:w-[300px] flex-shrink-0`}
               role="listitem"
             >
-              <div className="relative w-full h-[350px] sm:h-[400px] lg:h-[650px] bg-gray-200 overflow-hidden group cursor-pointer">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative w-full h-[330px] sm:h-[380px] lg:h-[600px] bg-gray-200 overflow-hidden group cursor-pointer">
+                {category.video ? (
+                  <video
+                    src={category.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500" />
 
               </div>
@@ -190,6 +204,21 @@ export const ProductCategoriesSection = () => {
             </article>
           ))}
         </div>
+      </div>
+
+      {/* CTA below the gallery */}
+      <div className="ml-4 sm:ml-6 lg:ml-16 pr-4 sm:pr-6 lg:pr-16 mt-8 lg:mt-10">
+        <div className="flex justify-center sm:justify-start">
+          <a
+            href="https://buy.stripe.com/5kQcN5a6b7FVgWY9PIcwg00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 bg-white text-[#0b1c26] text-base sm:text-lg font-medium transition-colors duration-200 rounded-none"
+          >
+            Reserve My Infinite Spa
+          </a>
+        </div>
+        <p className="text-xs text-white/80 text-center sm:text-left mt-3">*First Infinite Spas Shipping Fall of 2025.</p>
       </div>
     </section>
   );
