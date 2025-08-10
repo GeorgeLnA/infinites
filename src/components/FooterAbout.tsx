@@ -112,6 +112,8 @@ const FooterAbout = () => {
               src="/newlogo.png"
               alt="Infinite Spa Logo"
               className="h-12 object-contain"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
