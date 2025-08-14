@@ -6,6 +6,7 @@ export const ProjectsSection = () => {
     {
       id: 1,
       title: "SLEEPBOX",
+      description: "Award Winning Sleep Pod Designed and Built by Our Team.",
       images: [
         "/DSC_4358.jpg",
         "/6_Photo - 1 (2).jpg",
@@ -15,6 +16,7 @@ export const ProjectsSection = () => {
     {
       id: 2,
       title: "Model 106",
+      description: "Over 150 Luxury Tiny Homes Delivered to the US and Canada.",
       images: [
         "/IMG_0288.webp",
         "/6_Photo - 3 (2).jpg",
@@ -56,7 +58,7 @@ export const ProjectsSection = () => {
               id="projects-heading"
               className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight"
             >
-              Past Builds
+              Our Team of Award Winning Architects' Past Work
             </h2>
           </header>
 
@@ -118,7 +120,7 @@ export const ProjectsSection = () => {
                       <h3 className="font-medium text-white text-xl lg:text-2xl leading-tight">
                         {project.title}
                       </h3>
-                      <p className="mt-2 text-white/80 text-sm lg:text-base">Hover to preview images. Use arrows to browse.</p>
+                      <p className="mt-2 text-white/80 text-sm lg:text-base">{project.description}</p>
                     </div>
                   </div>
                 </div>

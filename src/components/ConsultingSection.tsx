@@ -105,9 +105,9 @@ export const ProductCategoriesSection = () => {
           <header className="text-left max-w-3xl">
             <h2
               id="product-categories-heading"
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight"
             >
-                              We Reimagined Luxury Spas
+              We Reimagined Luxury Spas
             </h2>
             <p className="mt-3 text-white/80 text-base sm:text-lg">
               Making Them Modular, Mobile, & Suitable For Any Environment.

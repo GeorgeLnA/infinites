@@ -5,6 +5,7 @@ const Hero = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [location, setLocation] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -30,6 +31,10 @@ const Hero = () => {
       setErrorMessage('Please enter a valid phone number.');
       return;
     }
+    if (!location) {
+      setErrorMessage('Please select your location.');
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -39,6 +44,7 @@ const Hero = () => {
       setName('');
       setEmail('');
       setPhone('');
+      setLocation('');
       navigate('/confirmation');
     } catch (error) {
       setErrorMessage('Something went wrong. Please try again.');
@@ -53,7 +59,7 @@ const Hero = () => {
         className="text-white text-xl sm:text-2xl font-medium tracking-wide mb-4"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
-        Request Info
+        Welcome! We're Here to Help With Your Modular Spa Needs.
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -100,6 +106,22 @@ const Hero = () => {
             required
           />
         </div>
+        <div>
+          <label htmlFor="hero-location" className="block text-white/80 text-sm mb-1">Location</label>
+          <select
+            id="hero-location"
+            name="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="w-full px-3 py-2 bg-white/95 text-black outline-none focus:ring-2 focus:ring-white focus:ring-offset-0"
+            required
+          >
+            <option value="">Select your location</option>
+            <option value="US">US</option>
+            <option value="Canada">Canada</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
         {errorMessage && (
           <p className="text-red-300 text-sm" role="alert">{errorMessage}</p>
@@ -137,15 +159,17 @@ const Hero = () => {
       />
 
       {/* Mobile Content Overlay (separate layout) */}
-      <div className="relative z-10 h-screen flex items-center lg:hidden">
+      <div className="relative z-10 h-screen flex items-start pt-20 lg:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="w-full">
-            <h1
-              className="mb-6 text-center text-white tracking-[0.12em] sm:tracking-[0.14em] leading-tight text-5xl sm:text-6xl"
-              style={{ fontFamily: 'Orbitron, sans-serif', fontWeight: 100 }}
-            >
-              INFINITESPA
-            </h1>
+            <div className="mb-6 text-center backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto">
+              <h1
+                className="text-white leading-tight text-lg sm:text-xl lg:text-2xl font-light"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                INFINITESPA can turn any property into a paradise.
+              </h1>
+            </div>
             <div className="max-w-md mx-auto">
               {renderFormCard()}
             </div>
@@ -160,35 +184,13 @@ const Hero = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left: Branding and CTA */}
             <div className="text-left">
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl text-white tracking-[0.08em] sm:tracking-[0.12em] lg:tracking-[0.18em] transition-transform duration-300 ease-out mb-3 sm:mb-5 lg:mb-6 leading-tight"
-                style={{ fontFamily: 'Orbitron, sans-serif', fontWeight: 100 }}
-              >
-                INFINITESPA
-              </h1>
-
-              {/* Stylish Sharp CTA Button (desktop only) */}
-              <div className="mt-2 sm:mt-4 lg:mt-6 flex justify-start">
-                <button
-                  onClick={() => {
-                    const secondSection = document.querySelector('section:nth-of-type(2)');
-                    if (secondSection) {
-                      secondSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none shadow-2xl hover:scale-105 hover:shadow-white hover:shadow-2xl active:scale-95"
+              <div className="backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-6 sm:p-8 max-w-4xl">
+                <h1
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white transition-transform duration-300 ease-out leading-tight font-light"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
                 >
-                  <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                  <span className="relative font-bold text-sm sm:text-base lg:text-lg tracking-wider">EXPLORE NOW</span>
-                  <svg
-                    className="relative w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+                  INFINITESPA can turn any property into a paradise.
+                </h1>
               </div>
             </div>
 
