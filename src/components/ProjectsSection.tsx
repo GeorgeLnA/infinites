@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const ProjectsSection = () => {
   // Each project now has multiple images that can be cycled with arrows
@@ -8,19 +8,24 @@ export const ProjectsSection = () => {
       title: "SLEEPBOX",
       description: "Award Winning Sleep Pod Designed and Built by Our Team.",
       images: [
+        "/8.JPG",
+        "/bo-hotel-5-680x495.jpg",
+        "/DSC_4297.jpg",
+        "/IMG_0035.jpg",
+        "/IMG_9826.jpg",
         "/DSC_4358.jpg",
-        "/6_Photo - 1 (2).jpg",
-        "/6_Photo - 2 (2).jpg",
       ],
     },
     {
       id: 2,
-      title: "Model 106",
+      title: "aux box",
       description: "Over 150 Luxury Tiny Homes Delivered to the US and Canada.",
       images: [
         "/IMG_0288.webp",
-        "/6_Photo - 3 (2).jpg",
-        "/6_Photo - 4 (1).jpg",
+        "/IMG_0208.webp",
+        "/IMG_0283.webp",
+        "/IMG_0292.webp",
+        "/IMG_0299.webp",
       ],
     },
   ];
@@ -28,20 +33,49 @@ export const ProjectsSection = () => {
   // Track the currently visible image index per project id
   const [projectImageIndex, setProjectImageIndex] = useState<Record<number, number>>({});
 
+  // Auto-rotate Sleepbox (project id 1) images every 8 seconds
+  const autoRotateIntervalMs = 8000;
+  const intervalRef = useRef<number | undefined>(undefined);
+  const sleepboxImagesCount = projects[0]?.images.length ?? 0;
+
+  const startAutoRotate = () => {
+    if (intervalRef.current) window.clearInterval(intervalRef.current);
+    if (sleepboxImagesCount === 0) return;
+    intervalRef.current = window.setInterval(() => {
+      setProjectImageIndex((prev) => {
+        const currentIndex = prev[1] ?? 0;
+        const nextIndex = (currentIndex + 1) % sleepboxImagesCount;
+        return { ...prev, 1: nextIndex };
+      });
+    }, autoRotateIntervalMs);
+  };
+
+  useEffect(() => {
+    startAutoRotate();
+    return () => {
+      if (intervalRef.current) window.clearInterval(intervalRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sleepboxImagesCount]);
+
   const setPrevImage = (projectId: number, totalImages: number) => {
+    console.log('Previous button clicked for project:', projectId); // Debug log
     setProjectImageIndex((prev) => {
       const currentIndex = prev[projectId] ?? 0;
       const nextIndex = (currentIndex - 1 + totalImages) % totalImages;
       return { ...prev, [projectId]: nextIndex };
     });
+    startAutoRotate();
   };
 
   const setNextImage = (projectId: number, totalImages: number) => {
+    console.log('Next button clicked for project:', projectId); // Debug log
     setProjectImageIndex((prev) => {
       const currentIndex = prev[projectId] ?? 0;
       const nextIndex = (currentIndex + 1) % totalImages;
       return { ...prev, [projectId]: nextIndex };
     });
+    startAutoRotate();
   };
 
   return (
@@ -88,32 +122,34 @@ export const ProjectsSection = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Prev Arrow - matches gallery styling */}
+                {/* Prev Arrow */}
                 <button
                   type="button"
                   aria-label={`Previous image for ${project.title}`}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-white/80 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-opacity opacity-90"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-colors z-20"
                   onClick={() => setPrevImage(project.id, total)}
+                  style={{ zIndex: 20 }}
                 >
-                  <svg className="w-4 h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <svg className="w-4 h-4 rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17l9.2-9.2M17 17V7H7" strokeWidth="2" />
                   </svg>
                 </button>
 
-                {/* Next Arrow - matches gallery styling */}
+                {/* Next Arrow */}
                 <button
                   type="button"
                   aria-label={`Next image for ${project.title}`}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-white/80 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-opacity opacity-90"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-colors z-20"
                   onClick={() => setNextImage(project.id, total)}
+                  style={{ zIndex: 20 }}
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17l9.2-9.2M17 17V7H7" strokeWidth="2" />
                   </svg>
                 </button>
 
                 {/* Hover Reveal Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 pointer-events-none" />
                 <div className="pointer-events-none absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-full">
                     <div className="bg-gradient-to-t from-black/70 to-transparent -m-6 p-6 pb-8">

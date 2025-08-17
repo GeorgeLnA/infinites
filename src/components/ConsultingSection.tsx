@@ -64,31 +64,31 @@ export const ProductCategoriesSection = () => {
     {
       id: 1,
       title: "SLEEPBOX",
-      image: "/6_Photo - 1 (2).jpg",
+      image: "/airender1.png",
       titleParts: ["SLEEPBOX"],
     },
     {
       id: 2,
       title: "Alpine Sanctuary",
-      image: "/20250802_0244_Modular Cabin Retreat_remix_01k1m71yfsfwnsax6qx1vwv874.png",
+      image: "/airender2.png",
       titleParts: ["Alpine", "Sanctuary"],
     },
     {
       id: 3,
       title: "Waterfall Wellness",
-      image: "/20250802_0255_Modular Home Retreat_remix_01k1m7nyv6f099pvxfjnn723pc.png",
+      image: "/airender3.png",
       titleParts: ["Waterfall", "Wellness"],
     },
     {
       id: 4,
       title: "Tropical Paradise",
-      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvjeq28mttcxg3sp5mf.png",
+      image: "/airender4.png",
       titleParts: ["Tropical", "Paradise"],
     },
     {
       id: 5,
       title: "Mountain Haven",
-      image: "/20250802_0259_Modular Oasis Retreat_remix_01k1m7xyvkfd6sytx38gq7ccqf.png",
+      image: "/6_Photo - 1 (2).jpg",
       titleParts: ["Mountain", "Haven"],
     },
   ];

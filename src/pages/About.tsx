@@ -152,9 +152,14 @@ const About = () => (
           Join us in making wellness truly infinite. Discover how our innovative spa solutions 
           can transform your space and elevate your wellness experience.
         </p>
-        <button className="px-12 py-6 bg-white text-[#0a1f4a]  hover:bg-gray-50 transition-colors font-medium text-xl">
+        <a 
+          href="https://calendly.com/matt-boney/infinite-spa-consult"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-12 py-6 bg-white text-[#0a1f4a] hover:bg-gray-50 transition-colors font-medium text-xl inline-block"
+        >
           Get Started Today
-        </button>
+        </a>
       </div>
     </section>
 

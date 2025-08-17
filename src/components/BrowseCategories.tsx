@@ -82,10 +82,15 @@ const BrowseCategories = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center px-8 py-4 bg-blue-dark text-white  hover:bg-blue-800 transition-colors font-medium">
+          <a 
+            href="https://calendly.com/matt-boney/infinite-spa-consult"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-8 py-4 bg-blue-dark text-white hover:bg-blue-800 transition-colors font-medium"
+          >
             <span>View All Products</span>
             <ArrowRight className="w-5 h-5 ml-2" />
-          </button>
+          </a>
         </div>
       </div>
     </section>

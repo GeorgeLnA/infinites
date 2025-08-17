@@ -54,17 +54,17 @@ const Hero = () => {
   };
 
   const renderFormCard = () => (
-    <div className="w-full backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-5 sm:p-6 md:p-7 lg:p-8 max-w-md lg:max-w-md xl:max-w-lg">
+    <div className="w-full backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-4 sm:p-5 md:p-6 max-w-sm lg:max-w-sm xl:max-w-md">
       <h2
-        className="text-white text-xl sm:text-2xl font-medium tracking-wide mb-4"
+        className="text-white text-lg sm:text-xl font-medium tracking-wide mb-3"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
-        Welcome! We're Here to Help With Your Modular Spa Needs.
+        Get your modular SPA quote today
       </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label htmlFor="hero-name" className="block text-white/80 text-sm mb-1">Name</label>
+          <label htmlFor="hero-name" className="block text-white/80 text-xs mb-1">Name</label>
           <input
             id="hero-name"
             name="name"
@@ -72,13 +72,13 @@ const Hero = () => {
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0"
+            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0 text-sm"
             placeholder="Jane Doe"
             required
           />
         </div>
         <div>
-          <label htmlFor="hero-email" className="block text-white/80 text-sm mb-1">Email</label>
+          <label htmlFor="hero-email" className="block text-white/80 text-xs mb-1">Email</label>
           <input
             id="hero-email"
             name="email"
@@ -86,13 +86,13 @@ const Hero = () => {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0"
+            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0 text-sm"
             placeholder="jane@example.com"
             required
           />
         </div>
         <div>
-          <label htmlFor="hero-phone" className="block text-white/80 text-sm mb-1">Phone</label>
+          <label htmlFor="hero-phone" className="block text-white/80 text-xs mb-1">Phone</label>
           <input
             id="hero-phone"
             name="phone"
@@ -101,19 +101,19 @@ const Hero = () => {
             autoComplete="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0"
+            className="w-full px-3 py-2 bg-white/95 text-black placeholder-black/50 outline-none focus:ring-2 focus:ring-white focus:ring-offset-0 text-sm"
             placeholder="+1 555 555 5555"
             required
           />
         </div>
         <div>
-          <label htmlFor="hero-location" className="block text-white/80 text-sm mb-1">Location</label>
+          <label htmlFor="hero-location" className="block text-white/80 text-xs mb-1">Location</label>
           <select
             id="hero-location"
             name="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full px-3 py-2 bg-white/95 text-black outline-none focus:ring-2 focus:ring-white focus:ring-offset-0"
+            className="w-full px-3 py-2 bg-white/95 text-black outline-none focus:ring-2 focus:ring-white focus:ring-offset-0 text-sm"
             required
           >
             <option value="">Select your location</option>
@@ -124,19 +124,19 @@ const Hero = () => {
         </div>
 
         {errorMessage && (
-          <p className="text-red-300 text-sm" role="alert">{errorMessage}</p>
+          <p className="text-red-300 text-xs" role="alert">{errorMessage}</p>
         )}
         {successMessage && (
-          <p className="text-green-300 text-sm" role="status">{successMessage}</p>
+          <p className="text-green-300 text-xs" role="status">{successMessage}</p>
         )}
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full group relative inline-flex items-center justify-center px-5 py-3 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none shadow-xl hover:scale-[1.02] hover:shadow-white hover:shadow-2xl active:scale-95 disabled:opacity-70"
+          className="w-full group relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none shadow-xl hover:scale-[1.02] hover:shadow-white hover:shadow-2xl active:scale-95 disabled:opacity-70"
         >
           <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-          <span className="relative font-semibold text-sm sm:text-base tracking-wider">
+          <span className="relative font-semibold text-sm tracking-wider">
             {isSubmitting ? 'Sending…' : 'Learn more'}
           </span>
         </button>
@@ -149,7 +149,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative h-screen overflow-hidden bg-transparent pt-16 lg:pt-24"
+      className="relative min-h-[55vh] overflow-hidden bg-transparent py-10 lg:py-14"
     >
       {/* Background Image */}
       <img
@@ -159,45 +159,21 @@ const Hero = () => {
       />
 
       {/* Mobile Content Overlay (separate layout) */}
-      <div className="relative z-10 h-screen flex items-start pt-20 lg:hidden">
+      <div className="relative z-10 min-h-[55vh] flex items-center pt-10 lg:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="w-full">
-            <div className="mb-6 text-center backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto">
-              <h1
-                className="text-white leading-tight text-lg sm:text-xl lg:text-2xl font-light"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                INFINITESPA can turn any property into a paradise.
-              </h1>
-            </div>
-            <div className="max-w-md mx-auto">
+            <div className="max-w-sm mx-auto mt-8">
               {renderFormCard()}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Desktop/Tablet Content Overlay (unchanged) */
-      }
-      <div className="relative z-10 h-screen hidden lg:flex items-center">
+      {/* Desktop/Tablet Content Overlay (unchanged) */}
+      <div className="relative z-10 min-h-[55vh] hidden lg:flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left: Branding and CTA */}
-            <div className="text-left">
-              <div className="backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-6 sm:p-8 max-w-4xl">
-                <h1
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white transition-transform duration-300 ease-out leading-tight font-light"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                >
-                  INFINITESPA can turn any property into a paradise.
-                </h1>
-              </div>
-            </div>
-
-            {/* Right: Quick Form */}
-            <div className="w-full flex justify-end">
-              {renderFormCard()}
-            </div>
+          <div className="flex justify-end pt-12">
+            {renderFormCard()}
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@ const Contact = () => {
                          </div>
                   <div>
                     <h3 className="font-medium text-[#0d0c09] text-lg">Email</h3>
-                    <p className="text-[#0d0c09] font-light">info@infinitespa.com</p>
+                    <p className="text-[#0d0c09] font-light">info@infinitespa.co</p>
                   </div>
                 </div>
 
@@ -52,7 +52,7 @@ const Contact = () => {
                          </div>
                   <div>
                     <h3 className="font-medium text-[#0d0c09] text-lg">Phone</h3>
-                    <p className="text-[#0d0c09] font-light">+44 (0) 123 456 7890</p>
+                    <p className="text-[#0d0c09] font-light">+1 (208) 709-7720</p>
                   </div>
                 </div>
 
@@ -62,7 +62,7 @@ const Contact = () => {
                          </div>
                   <div>
                     <h3 className="font-medium text-[#0d0c09] text-lg">Location</h3>
-                    <p className="text-[#0d0c09] font-light">United Kingdom & Miami, FL</p>
+                    <p className="text-[#0d0c09] font-light">Miami, FL</p>
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent"
-                    placeholder="+44 (0) 123 456 7890"
+                    placeholder="+1 (208) 709-7720"
                   />
                 </div>
 

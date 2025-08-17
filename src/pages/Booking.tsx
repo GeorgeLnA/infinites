@@ -60,11 +60,11 @@ const Booking = () => {
               Having trouble with the calendar? Contact us directly:
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:info@infinitespa.com"
-                className="text-[#0b1c26] hover:text-gray-600 transition-colors font-medium"
+              <a 
+                href="mailto:info@infinitespa.co"
+                className="text-[#0b1c26] hover:underline font-medium"
               >
-                info@infinitespa.com
+                info@infinitespa.co
               </a>
               <span className="text-gray-400">|</span>
               <a

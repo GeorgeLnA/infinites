@@ -16,7 +16,7 @@ const Confirmation = () => {
 
             <div className="flex justify-center">
               <a
-                href="https://calendly.com/your-calendly-link"
+                href="https://calendly.com/matt-boney/infinite-spa-consult"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-[#0b1c26] text-white font-medium hover:bg-[#0b1c26]/90 transition-colors duration-200 rounded-none"

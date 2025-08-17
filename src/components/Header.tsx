@@ -87,7 +87,9 @@ const Header = () => {
           {/* Desktop QUOTE Button */}
           <div className="hidden lg:flex items-center">
             <a 
-              href="/booking" 
+              href="https://calendly.com/matt-boney/infinite-spa-consult" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0b1c26]"
             >
               <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
@@ -147,11 +149,13 @@ const Header = () => {
               {/* Mobile CTA Button */}
               <div className="pt-4 border-t border-white/10">
                 <a 
-                  href="/booking" 
+                  href="https://calendly.com/matt-boney/infinite-spa-consult" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center w-full px-6 py-3 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0b1c26]"
                   onClick={closeMobileMenu}
                 >
-                  <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                  <span className="absolute right-0 w-8 h-32 -mt-12 transition-transform duration-300 group-hover:-translate-x-40 ease"></span>
                   <span className="relative font-medium text-base tracking-wider">Book a Call</span>
                   <svg className="relative w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

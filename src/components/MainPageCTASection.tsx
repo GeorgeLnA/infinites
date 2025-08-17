@@ -25,8 +25,10 @@ export const ContactCTASection = () => {
           {/* CTA Button */}
           <div className="flex justify-center lg:justify-end">
             <a
-              href="/booking"
-                              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
+              href="https://calendly.com/matt-boney/infinite-spa-consult"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 overflow-hidden font-medium text-[#0b1c26] transition-all duration-300 ease-out border-2 border-[#0b1c26] rounded-none shadow-lg hover:scale-105 active:scale-95 bg-transparent hover:bg-[#0b1c26] hover:text-white"
               aria-label="Book a call"
             >
               <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-[#0b1c26] opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
