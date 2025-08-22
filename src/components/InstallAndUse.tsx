@@ -13,7 +13,7 @@ export const InstallAndUse = () => {
   const [hoveredStep, setHoveredStep] = React.useState<number | null>(null);
 
   return (
-    <section className="w-full py-16 lg:py-32" aria-labelledby="install-use-heading">
+    <section className="w-full py-16 lg:py-24" aria-labelledby="install-use-heading">
       <div className="px-4 sm:px-6 lg:pr-4 lg:pr-8 mb-6 lg:mb-8 lg:ml-4 lg:ml-8">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
           <header className="mb-6 lg:mb-0 text-center lg:text-left">
@@ -25,11 +25,7 @@ export const InstallAndUse = () => {
             </h2>
           </header>
 
-          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-[#0b1c26] text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
-              Simple setup process
-            </p>
-          </div>
+
         </div>
       </div>
 

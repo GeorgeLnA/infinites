@@ -11,6 +11,7 @@ import Technology from './pages/Technology';
 import Contact from './pages/Contact';
 import Confirmation from './pages/Confirmation';
 import Booking from './pages/Booking';
+import Dealer from './pages/Dealer';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,6 +43,7 @@ function App() {
               <Route path="/about-us" element={<Technology />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/dealer" element={<Dealer />} />
               <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
           </main>

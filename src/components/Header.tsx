@@ -85,7 +85,14 @@ const Header = () => {
           </nav>
           
           {/* Desktop QUOTE Button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center space-x-4">
+            <a 
+              href="/dealer" 
+              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0b1c26]"
+            >
+              <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+              <span className="relative font-medium text-sm tracking-wider">Become a Dealer</span>
+            </a>
             <a 
               href="https://calendly.com/matt-boney/infinite-spa-consult" 
               target="_blank"
@@ -146,8 +153,16 @@ const Header = () => {
                 </a>
               </div>
               
-              {/* Mobile CTA Button */}
-              <div className="pt-4 border-t border-white/10">
+              {/* Mobile CTA Buttons */}
+              <div className="pt-4 border-t border-white/10 space-y-3">
+                <a 
+                  href="/dealer" 
+                  className="group relative inline-flex items-center justify-center w-full px-6 py-3 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none hover:scale-105 active:scale-95 bg-transparent hover:bg-white hover:text-[#0b1c26]"
+                  onClick={closeMobileMenu}
+                >
+                  <span className="absolute right-0 w-8 h-32 -mt-12 transition-transform duration-300 group-hover:-translate-x-40 ease"></span>
+                  <span className="relative font-medium text-base tracking-wider">Become a Dealer</span>
+                </a>
                 <a 
                   href="https://calendly.com/matt-boney/infinite-spa-consult" 
                   target="_blank"

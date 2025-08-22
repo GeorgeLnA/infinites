@@ -69,24 +69,36 @@ export const ProductCategoriesSection = () => {
     },
     {
       id: 2,
+      title: "Luxury Wellness Unit",
+      image: "/airender5.png",
+      titleParts: ["Luxury", "Wellness", "Unit"],
+    },
+    {
+      id: 3,
       title: "Alpine Sanctuary",
       image: "/airender2.png",
       titleParts: ["Alpine", "Sanctuary"],
     },
     {
-      id: 3,
+      id: 4,
+      title: "Modern Spa Retreat",
+      image: "/airender6.png",
+      titleParts: ["Modern", "Spa", "Retreat"],
+    },
+    {
+      id: 5,
       title: "Waterfall Wellness",
       image: "/airender3.png",
       titleParts: ["Waterfall", "Wellness"],
     },
     {
-      id: 4,
+      id: 6,
       title: "Tropical Paradise",
       image: "/airender4.png",
       titleParts: ["Tropical", "Paradise"],
     },
     {
-      id: 5,
+      id: 7,
       title: "Mountain Haven",
       image: "/6_Photo - 1 (2).jpg",
       titleParts: ["Mountain", "Haven"],
@@ -101,16 +113,18 @@ export const ProductCategoriesSection = () => {
       aria-labelledby="product-categories-heading"
     >
       <div className="ml-4 sm:ml-6 lg:ml-16 pr-4 sm:pr-6 lg:pr-16">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8 lg:mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8 lg:mb-12">
           <header className="text-left max-w-3xl">
             <h2
               id="product-categories-heading"
               className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight"
             >
-              We Reimagined Luxury Spas
+              Infinite Spa — Luxury Wellness Ready
+              Tomorrow, Not Next Year.
             </h2>
             <p className="mt-3 text-white/80 text-base sm:text-lg">
-              Making Them Modular, Mobile, & Suitable For Any Environment.
+              Join Real Estate and Hospitality's #1 Trend With Infinite Spa. Modular and Mobile Wellness,
+              Suitable For Any Environment.
             </p>
           </header>
 
@@ -119,7 +133,7 @@ export const ProductCategoriesSection = () => {
             aria-label="Product navigation"
           >
             <button
-              className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
+              className={`w-8 h-8 lg:w-12 lg:h-12 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
                 currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
               }`}
               aria-label="Previous products"
@@ -127,15 +141,15 @@ export const ProductCategoriesSection = () => {
               onClick={scrollPrev}
               disabled={currentIndex === 0}
             >
-              <div className="h-6 lg:h-8 flex items-center justify-center">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 rotate-180" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
-                  <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <div className="h-8 lg:h-12 flex items-center justify-center">
+                <svg className="w-4 h-4 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
+                  <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none"/>
                 </svg>
               </div>
             </button>
 
             <button
-              className={`w-6 h-6 lg:w-8 lg:h-8 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
+              className={`w-8 h-8 lg:w-12 lg:h-12 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 transition-opacity ${
                 currentIndex === productCategories.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-90'
               }`}
               aria-label="Next products"
@@ -143,9 +157,9 @@ export const ProductCategoriesSection = () => {
               onClick={scrollNext}
               disabled={currentIndex === productCategories.length - 1}
             >
-              <div className="h-6 lg:h-8 flex items-center justify-center">
-                <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
-                  <path d="M7 17l9.2-9.2M17 17V7H7" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <div className="h-8 lg:h-12 flex items-center justify-center">
+                <svg className="w-4 h-4 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'white' }}>
+                  <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none"/>
                 </svg>
               </div>
             </button>

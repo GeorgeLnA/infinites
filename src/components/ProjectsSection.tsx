@@ -8,24 +8,24 @@ export const ProjectsSection = () => {
       title: "SLEEPBOX",
       description: "Award Winning Sleep Pod Designed and Built by Our Team.",
       images: [
+        "/DSC_4358.jpg",
         "/8.JPG",
         "/bo-hotel-5-680x495.jpg",
         "/DSC_4297.jpg",
         "/IMG_0035.jpg",
         "/IMG_9826.jpg",
-        "/DSC_4358.jpg",
       ],
     },
     {
       id: 2,
-      title: "aux box",
-      description: "Over 150 Luxury Tiny Homes Delivered to the US and Canada.",
+      title: "Luxury Tiny Homes",
+      description: "1000+ Units Delivered By Our Manufacturing Partners",
       images: [
-        "/IMG_0288.webp",
-        "/IMG_0208.webp",
-        "/IMG_0283.webp",
-        "/IMG_0292.webp",
-        "/IMG_0299.webp",
+        "/auxbox1.jpeg",
+        "/aux2.jpg",
+        "/aux3.jpg",
+        "/aux4.jpg",
+        "/aux5.jpg",
       ],
     },
   ];
@@ -33,49 +33,20 @@ export const ProjectsSection = () => {
   // Track the currently visible image index per project id
   const [projectImageIndex, setProjectImageIndex] = useState<Record<number, number>>({});
 
-  // Auto-rotate Sleepbox (project id 1) images every 8 seconds
-  const autoRotateIntervalMs = 8000;
-  const intervalRef = useRef<number | undefined>(undefined);
-  const sleepboxImagesCount = projects[0]?.images.length ?? 0;
-
-  const startAutoRotate = () => {
-    if (intervalRef.current) window.clearInterval(intervalRef.current);
-    if (sleepboxImagesCount === 0) return;
-    intervalRef.current = window.setInterval(() => {
-      setProjectImageIndex((prev) => {
-        const currentIndex = prev[1] ?? 0;
-        const nextIndex = (currentIndex + 1) % sleepboxImagesCount;
-        return { ...prev, 1: nextIndex };
-      });
-    }, autoRotateIntervalMs);
-  };
-
-  useEffect(() => {
-    startAutoRotate();
-    return () => {
-      if (intervalRef.current) window.clearInterval(intervalRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sleepboxImagesCount]);
-
   const setPrevImage = (projectId: number, totalImages: number) => {
-    console.log('Previous button clicked for project:', projectId); // Debug log
     setProjectImageIndex((prev) => {
       const currentIndex = prev[projectId] ?? 0;
       const nextIndex = (currentIndex - 1 + totalImages) % totalImages;
       return { ...prev, [projectId]: nextIndex };
     });
-    startAutoRotate();
   };
 
   const setNextImage = (projectId: number, totalImages: number) => {
-    console.log('Next button clicked for project:', projectId); // Debug log
     setProjectImageIndex((prev) => {
       const currentIndex = prev[projectId] ?? 0;
       const nextIndex = (currentIndex + 1) % totalImages;
       return { ...prev, [projectId]: nextIndex };
     });
-    startAutoRotate();
   };
 
   return (
@@ -96,11 +67,7 @@ export const ProjectsSection = () => {
             </h2>
           </header>
 
-          <div className="flex flex-col items-center lg:flex-row lg:items-center lg:gap-8">
-            <p className="text-white text-base lg:text-lg font-medium leading-relaxed mb-4 lg:mb-0 max-w-xs text-center">
-              Our completed work
-            </p>
-          </div>
+
         </div>
       </div>
 
@@ -126,12 +93,12 @@ export const ProjectsSection = () => {
                 <button
                   type="button"
                   aria-label={`Previous image for ${project.title}`}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-colors z-20"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 group-hover:bg-white group-hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-all duration-300 z-20"
                   onClick={() => setPrevImage(project.id, total)}
                   style={{ zIndex: 20 }}
                 >
-                  <svg className="w-4 h-4 rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M7 17l9.2-9.2M17 17V7H7" strokeWidth="2" />
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 18l-6-6 6-6" strokeWidth="2" />
                   </svg>
                 </button>
 
@@ -139,12 +106,12 @@ export const ProjectsSection = () => {
                 <button
                   type="button"
                   aria-label={`Next image for ${project.title}`}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-colors z-20"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center bg-black/30 text-white/80 group-hover:bg-white group-hover:text-black focus:outline-none focus:ring-2 focus:ring-white/80 rounded-none transition-all duration-300 z-20"
                   onClick={() => setNextImage(project.id, total)}
                   style={{ zIndex: 20 }}
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M7 17l9.2-9.2M17 17V7H7" strokeWidth="2" />
+                    <path d="M9 18l6-6-6-6" strokeWidth="2" />
                   </svg>
                 </button>
 

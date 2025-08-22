@@ -54,12 +54,12 @@ const Hero = () => {
   };
 
   const renderFormCard = () => (
-    <div className="w-full backdrop-blur-sm bg-black/50 border border-white/15 shadow-2xl p-4 sm:p-5 md:p-6 max-w-sm lg:max-w-sm xl:max-w-md">
-      <h2
+    <div className="w-full backdrop-blur-sm bg-black/50 p-4 sm:p-5 md:p-6 max-w-sm lg:max-w-sm xl:max-w-md">
+              <h2
         className="text-white text-lg sm:text-xl font-medium tracking-wide mb-3"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
-        Get your modular SPA quote today
+        Get Your Free Modular Spa Quote Today
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-3">
@@ -133,15 +133,15 @@ const Hero = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full group relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-medium text-white transition-all duration-300 ease-out border-2 border-white rounded-none shadow-xl hover:scale-[1.02] hover:shadow-white hover:shadow-2xl active:scale-95 disabled:opacity-70"
+          className="w-full group relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-medium text-white transition-all duration-300 ease-out rounded-none border-2 border-white hover:scale-[1.02] hover:shadow-white hover:shadow-2xl active:scale-95 disabled:opacity-70"
         >
           <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
           <span className="relative font-semibold text-sm tracking-wider">
-            {isSubmitting ? 'Sending…' : 'Learn more'}
+            {isSubmitting ? 'Sending…' : 'Get My Free Quote'}
           </span>
         </button>
 
-        <p className="text-xs text-white/70 text-center">We respect your privacy. No spam.</p>
+        <p className="hidden lg:block text-xs text-white/70 text-center">We respect your privacy. No spam.</p>
       </form>
     </div>
   );
@@ -149,20 +149,20 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[55vh] overflow-hidden bg-transparent py-10 lg:py-14"
+      className="relative min-h-[55vh] lg:min-h-[55vh] min-h-[85vh] overflow-hidden bg-[#0b1c26] lg:bg-transparent py-10 lg:py-14 border-0"
     >
       {/* Background Image */}
       <img
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover object-top lg:object-center z-0 -top-40 lg:top-0"
         src="/6_Photo - 1 (2).jpg"
         alt="Infinite Spa luxury wellness experience"
       />
 
       {/* Mobile Content Overlay (separate layout) */}
-      <div className="relative z-10 min-h-[55vh] flex items-center pt-10 lg:hidden">
+      <div className="relative z-10 min-h-[75vh] lg:min-h-[55vh] flex items-end pb-4 lg:items-center lg:pt-10 lg:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="w-full">
-            <div className="max-w-sm mx-auto mt-8">
+            <div className="max-w-sm mx-auto -mb-20">
               {renderFormCard()}
             </div>
           </div>

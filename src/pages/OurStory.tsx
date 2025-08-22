@@ -15,8 +15,7 @@ const OurStory = () => {
         "Innovative modular hospitality solutions"
       ],
       bestCompanies: [
-        "MIT",
-        "Various hospitality brands"
+        "MIT"
       ]
     },
     {
@@ -30,9 +29,7 @@ const OurStory = () => {
         "Revenue generation systems"
       ],
       bestCompanies: [
-        "Brown University",
-        "Daycation",
-        "Hospitality tech ventures"
+        "Brown University"
       ]
     }
   ];
@@ -91,7 +88,7 @@ const OurStory = () => {
                     <div>
                       <h4 className="text-lg font-medium text-[#0b1c26] mb-3 flex items-center">
                         <Award className="w-5 h-5 mr-2" />
-                        Experience
+                        Education
                       </h4>
                       <ul className="space-y-2">
                         {developer.bestCompanies.map((company, idx) => (

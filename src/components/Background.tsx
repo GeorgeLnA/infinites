@@ -10,6 +10,21 @@ const InstallAndUse = lazy(() =>
 const ProjectsSection = lazy(() =>
   import("./ProjectsSection").then((m) => ({ default: m.ProjectsSection }))
 );
+const WhoIsThisForSection = lazy(() =>
+  import("./WhoIsThisForSection").then((m) => ({ default: m.default }))
+);
+const WhatsIncludedSection = lazy(() =>
+  import("./WhatsIncludedSection").then((m) => ({ default: m.default }))
+);
+const WhyUsSection = lazy(() =>
+  import("./WhyUsSection").then((m) => ({ default: m.default }))
+);
+const WhyNowSection = lazy(() =>
+  import("./WhyNowSection").then((m) => ({ default: m.default }))
+);
+const HowItWorksSection = lazy(() =>
+  import("./HowItWorksSection").then((m) => ({ default: m.default }))
+);
 const ContactCTASection = lazy(() =>
   import("./MainPageCTASection").then((m) => ({ default: m.ContactCTASection }))
 );
@@ -19,16 +34,9 @@ export const Background = () => {
   const [showRest, setShowRest] = useState(false);
 
   useEffect(() => {
-    const schedule = (cb: () => void) => {
-      const ric: any = (window as any).requestIdleCallback;
-      if (typeof ric === "function") {
-        ric(cb, { timeout: 800 });
-      } else {
-        setTimeout(cb, 0);
-      }
-    };
-    // Let the hero render first, then queue loading of the rest
-    schedule(() => setShowRest(true));
+    // Load everything immediately after hero renders
+    const timer = setTimeout(() => setShowRest(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -37,8 +45,13 @@ export const Background = () => {
       {showRest && (
         <Suspense fallback={null}>
           <ProductCategoriesSection />
+          <WhoIsThisForSection />
           <ProjectsSection />
+          <WhatsIncludedSection />
           <InstallAndUse />
+          <WhyUsSection />
+          <WhyNowSection />
+          <HowItWorksSection />
           <Benefits />
           <ContactCTASection />
         </Suspense>
