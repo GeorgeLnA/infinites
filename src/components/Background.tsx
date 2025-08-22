@@ -32,19 +32,11 @@ const Benefits = lazy(() => import("./Benefits").then((m) => ({ default: m.defau
 
 export const Background = () => {
   const [showRest, setShowRest] = useState(false);
-  const [showVideos, setShowVideos] = useState(false);
 
   useEffect(() => {
     // Load everything immediately after hero renders
     const timer = setTimeout(() => setShowRest(true), 0);
-    
-    // Load videos after everything else is loaded
-    const videoTimer = setTimeout(() => setShowVideos(true), 100);
-    
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(videoTimer);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -56,7 +48,7 @@ export const Background = () => {
           <WhoIsThisForSection />
           <ProjectsSection />
           <WhatsIncludedSection />
-          {showVideos && <InstallAndUse />}
+          <InstallAndUse />
           <WhyUsSection />
           <WhyNowSection />
           <HowItWorksSection />
