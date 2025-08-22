@@ -162,7 +162,7 @@ const Hero = () => {
       <div className="relative z-10 min-h-[75vh] lg:min-h-[55vh] flex items-end pb-4 lg:items-center lg:pt-10 lg:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <div className="w-full">
-            <div className="max-w-sm mx-auto mb-12">
+            <div className="max-w-sm mx-auto -mb-14">
               {renderFormCard()}
             </div>
           </div>
