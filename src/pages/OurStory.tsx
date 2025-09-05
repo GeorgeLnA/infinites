@@ -30,6 +30,32 @@ const OurStory = () => {
       bestCompanies: [
         "Brown University"
       ]
+    },
+    {
+      name: "George Lowe",
+      role: "Marketing",
+      image: "/IMG_9826.jpg",
+      experience: "Brand strategy and growth marketing leader",
+      bestBuilds: [
+        "Brand partnerships",
+        "Demand generation campaigns"
+      ],
+      bestCompanies: [
+        ""
+      ]
+    },
+    {
+      name: "David Nartov",
+      role: "Tech",
+      image: "/IMG_0035.jpg",
+      experience: "Technical architecture and platform engineering",
+      bestBuilds: [
+        "Scalable backend systems",
+        "AI-assisted automation"
+      ],
+      bestCompanies: [
+        ""
+      ]
     }
   ];
 
