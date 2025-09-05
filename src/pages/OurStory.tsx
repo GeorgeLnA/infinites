@@ -41,7 +41,7 @@ const OurStory = () => {
         "Demand generation campaigns"
       ],
       bestCompanies: [
-        ""
+        "Oxford University"
       ]
     },
     {
@@ -54,7 +54,7 @@ const OurStory = () => {
         "AI-assisted automation"
       ],
       bestCompanies: [
-        ""
+        "Oxford University"
       ]
     }
   ];
