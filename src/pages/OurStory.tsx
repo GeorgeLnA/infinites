@@ -34,7 +34,7 @@ const OurStory = () => {
     {
       name: "George Lowe",
       role: "Marketing",
-      image: "/IMG_9826.jpg",
+      image: "/1748689370419.jpeg",
       experience: "Brand strategy and growth marketing leader",
       bestBuilds: [
         "Brand partnerships",
@@ -47,7 +47,7 @@ const OurStory = () => {
     {
       name: "David Nartov",
       role: "Tech",
-      image: "/IMG_0035.jpg",
+      image: "/1721175526756.jpeg",
       experience: "Technical architecture and platform engineering",
       bestBuilds: [
         "Scalable backend systems",
