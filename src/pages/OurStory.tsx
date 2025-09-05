@@ -45,7 +45,7 @@ const OurStory = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight mb-6">
-                Meet the visionaries behind Infinite Spa
+                Meet the Team
               </h2>
             </div>
 
