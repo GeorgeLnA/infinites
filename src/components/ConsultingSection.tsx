@@ -68,28 +68,10 @@ export const ProductCategoriesSection = () => {
       titleParts: ["SLEEPBOX"],
     },
     {
-      id: 2,
-      title: "Luxury Wellness Unit",
-      image: "/airender5.png",
-      titleParts: ["Luxury", "Wellness", "Unit"],
-    },
-    {
-      id: 3,
-      title: "Alpine Sanctuary",
-      image: "/airender2.png",
-      titleParts: ["Alpine", "Sanctuary"],
-    },
-    {
-      id: 4,
-      title: "Modern Spa Retreat",
-      image: "/airender6.png",
-      titleParts: ["Modern", "Spa", "Retreat"],
-    },
-    {
-      id: 5,
-      title: "Waterfall Wellness",
-      image: "/airender3.png",
-      titleParts: ["Waterfall", "Wellness"],
+      id: 7,
+      title: "Mountain Haven",
+      image: "/6_Photo - 1 (2).jpg",
+      titleParts: ["Mountain", "Haven"],
     },
     {
       id: 6,
@@ -98,10 +80,22 @@ export const ProductCategoriesSection = () => {
       titleParts: ["Tropical", "Paradise"],
     },
     {
-      id: 7,
-      title: "Mountain Haven",
-      image: "/6_Photo - 1 (2).jpg",
-      titleParts: ["Mountain", "Haven"],
+      id: 3,
+      title: "Alpine Sanctuary",
+      image: "/airender2.png",
+      titleParts: ["Alpine", "Sanctuary"],
+    },
+    {
+      id: 5,
+      title: "Waterfall Wellness",
+      image: "/airender3.png",
+      titleParts: ["Waterfall", "Wellness"],
+    },
+    {
+      id: 4,
+      title: "Modern Spa Retreat",
+      image: "/airender6.png",
+      titleParts: ["Modern", "Spa", "Retreat"],
     },
   ];
 

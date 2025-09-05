@@ -1,5 +1,4 @@
-import React from 'react';
-import { MapPin, Building, Users, Award } from 'lucide-react';
+import { Building, Award } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const OurStory = () => {
@@ -46,11 +45,8 @@ const OurStory = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white leading-tight mb-6">
-                The Team
-              </h2>
-              <p className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Montserrat, sans-serif'}}>
                 Meet the visionaries behind Infinite Spa
-              </p>
+              </h2>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16">
@@ -105,50 +101,26 @@ const OurStory = () => {
           </div>
         </section>
 
-        {/* How It All Happened Section */}
+        {/* Mission Section */}
         <section className="w-full py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-              <div>
-                <h3 className="text-xl lg:text-2xl font-medium text-[#0b1c26] mb-6">The Vision</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  It started with a simple observation: luxury wellness experiences were confined to fixed locations, 
-                  limiting access and flexibility. In 2020, two engineers with backgrounds in hospitality technology 
-                  and smart automation saw an opportunity to revolutionize the industry.
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0b1c26] mb-8">Our Mission</h3>
+              <div className="space-y-6 text-xl text-gray-600" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                <p>
+                  We’re not just upgrading spaces—we’re transforming how wellness is experienced. Infinite Spa exists to help people reset, recharge, and reconnect, wherever they are.
                 </p>
-                <p className="text-gray-600 leading-relaxed text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  The idea was ambitious yet simple - create modular, transportable spa solutions that could deliver 
-                  5-star wellness experiences anywhere, without compromising on luxury or functionality.
+                <p>
+                  Founded in 2025, Infinite Spa was built on a bold mission: to bring high-quality wellness experiences to everyone, everywhere.
                 </p>
-              </div>
-              <div className="relative">
-                <img 
-                  src="/6_Photo - 3 (2).jpg" 
-                  alt="Infinite Spa Vision" 
-                  className="w-full h-96 object-cover shadow-lg"
-                />
-              </div>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative lg:order-1">
-                <img 
-                  src="/6_Photo - 2 (2).jpg" 
-                  alt="Development Process" 
-                  className="w-full h-96 object-cover shadow-lg"
-                />
-              </div>
-              <div className="lg:order-2">
-                <h3 className="text-xl lg:text-2xl font-medium text-[#0b1c26] mb-6">The Development</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  Three years of intensive research and development followed. Working with luxury hotels, 
-                  private clients, and wellness experts, we refined every detail - from advanced water 
-                  purification systems to AI-powered climate control.
+                <p>
+                  Our team’s roots run deep in hospitality and design. From working closely with hotels to elevate guest experiences, we saw firsthand how limited many properties were in delivering truly elevated wellness offerings. At the same time, our team had experience pioneering modular design innovations that made hospitality spaces more flexible, space-efficient, and scalable. These combined insights revealed a powerful opportunity: to create wellness spaces that are not only premium, but also faster to build, more affordable to operate, and consistently higher in quality.
                 </p>
-                <p className="text-gray-600 leading-relaxed text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  Our breakthrough came with the development of neural water control technology and 
-                  predictive maintenance systems, allowing us to deliver unprecedented reliability 
-                  and user experience in a mobile format.
+                <p>
+                  That vision quickly grew beyond hotels. Today, Infinite Spa is reimagining wellness across multifamily and residential developments as well—bringing resort-level amenities right into people’s everyday lives. Whether it’s a luxury apartment complex, a residential community, or a hotel property, Infinite Spa delivers plug-and-play wellness experiences designed to heal, inspire, and uplift.
+                </p>
+                <p>
+                  Our mission is simple yet powerful: to make wellness universal. Faster to build, smarter to operate, and designed to nurture body, mind, and spirit—Infinite Spa is here to transform the future of wellness.
                 </p>
               </div>
             </div>
