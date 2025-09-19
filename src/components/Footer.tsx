@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
+import PasskeyModal from './PasskeyModal';
 
 const Footer = () => {
+  const [showPasskeyModal, setShowPasskeyModal] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -123,6 +126,21 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Hidden Admin Access Button */}
+      <div 
+        className="fixed bottom-4 right-4 w-8 h-8 opacity-10 cursor-pointer z-50 bg-blue-500 rounded flex items-center justify-center text-white font-bold text-sm"
+        onClick={() => setShowPasskeyModal(true)}
+        title="Admin Access"
+      >
+        A
+      </div>
+
+      {/* Passkey Modal */}
+      <PasskeyModal 
+        isOpen={showPasskeyModal} 
+        onClose={() => setShowPasskeyModal(false)} 
+      />
     </footer>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase, FormSubmission } from '../lib/supabase';
 
 const Hero = () => {
   const [name, setName] = useState('');
@@ -38,8 +39,29 @@ const Hero = () => {
 
     setIsSubmitting(true);
     try {
-      // No backend connected yet. This simply simulates a successful submit.
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // Submit to Supabase
+      const submission: FormSubmission = {
+        form_type: 'hero',
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        location: location
+      };
+
+      const { data, error } = await supabase
+        .from('form_submissions')
+        .insert([submission])
+        .select();
+
+      console.log('Hero form submission result:', { data, error });
+
+      if (error) {
+        console.error('Hero form submission error:', error);
+        throw error;
+      }
+
+      console.log('Hero form submitted successfully:', data);
+
       setSuccessMessage('Thanks! We will reach out shortly.');
       setName('');
       setEmail('');
@@ -47,6 +69,7 @@ const Hero = () => {
       setLocation('');
       navigate('/confirmation');
     } catch (error) {
+      console.error('Error submitting form:', error);
       setErrorMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);

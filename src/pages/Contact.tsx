@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Footer from '../components/Footer';
+import { supabase, FormSubmission } from '../lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ const Contact = () => {
     phone: '',
     projectDescription: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -17,10 +21,49 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setErrorMessage('');
+    setSuccessMessage('');
+    setIsSubmitting(true);
+
+    try {
+      // Submit to Supabase
+      const submission: FormSubmission = {
+        form_type: 'contact',
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        project_description: formData.projectDescription.trim()
+      };
+
+      const { data, error } = await supabase
+        .from('form_submissions')
+        .insert([submission])
+        .select();
+
+      console.log('Contact form submission result:', { data, error });
+
+      if (error) {
+        console.error('Contact form submission error:', error);
+        throw error;
+      }
+
+      console.log('Contact form submitted successfully:', data);
+
+      setSuccessMessage('Thank you for your message! We will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectDescription: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrorMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -138,12 +181,25 @@ const Contact = () => {
                   />
                 </div>
 
+                {/* Success/Error Messages */}
+                {successMessage && (
+                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    {successMessage}
+                  </div>
+                )}
+                {errorMessage && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <button
                     type="submit"
-                    className="bg-[#0b1c26] text-white py-4 px-8 hover:bg-[#0b1c26]/90 transition-colors flex items-center justify-center space-x-2 font-medium text-lg"
+                    disabled={isSubmitting}
+                    className="bg-[#0b1c26] text-white py-4 px-8 hover:bg-[#0b1c26]/90 transition-colors flex items-center justify-center space-x-2 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>Send Inquiry</span>
+                    <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
                     <Send className="w-5 h-5" />
                   </button>
                   <button

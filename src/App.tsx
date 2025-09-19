@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Confirmation from './pages/Confirmation';
 import Booking from './pages/Booking';
 import Dealer from './pages/Dealer';
+import Admin from './pages/Admin';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -45,6 +46,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/dealer" element={<Dealer />} />
               <Route path="/confirmation" element={<Confirmation />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>
         </div>
