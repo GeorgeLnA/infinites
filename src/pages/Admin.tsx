@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, FormSubmission } from '../lib/supabase';
-import { Download, Eye, Filter, Search, Calendar, User, Mail, Phone, MapPin, MessageSquare, Lock, RefreshCw } from 'lucide-react';
+import { Download, Eye, Filter, Search, Calendar, User, Mail, Phone, MapPin, MessageSquare, Lock, RefreshCw, X } from 'lucide-react';
 
 const Admin = () => {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
@@ -11,6 +11,8 @@ const Admin = () => {
   const [filterType, setFilterType] = useState<'all' | 'hero' | 'contact'>('all');
   const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
+  const [showLeadModal, setShowLeadModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -142,6 +144,16 @@ const Admin = () => {
     navigate('/');
   };
 
+  const handleLeadClick = (submission: FormSubmission) => {
+    setSelectedSubmission(submission);
+    setShowLeadModal(true);
+  };
+
+  const closeLeadModal = () => {
+    setSelectedSubmission(null);
+    setShowLeadModal(false);
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -168,36 +180,37 @@ const Admin = () => {
     <div className="min-h-screen" style={{ backgroundColor: '#fff' }}>
       {/* Header */}
       <div className="border-b border-gray-200 pt-20" style={{ backgroundColor: '#0b1c26' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
             <div>
-              <h1 className="text-3xl font-medium text-white leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>Form Submissions</h1>
-              <p className="text-white/70 mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>Manage and view all form submissions</p>
+              <h1 className="text-2xl lg:text-3xl font-medium text-white leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>Form Submissions</h1>
+              <p className="text-white/70 mt-2 text-sm lg:text-base" style={{ fontFamily: 'Inter, sans-serif' }}>Manage and view all form submissions</p>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <button
                 onClick={exportToCSV}
-                className="bg-white text-[#0b1c26] px-6 py-3 hover:bg-white/90 transition-colors flex items-center space-x-2"
+                className="bg-white text-[#0b1c26] px-4 lg:px-6 py-2 lg:py-3 hover:bg-white/90 transition-colors flex items-center justify-center space-x-2 text-sm lg:text-base"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <Download className="w-4 h-4" />
-                <span>Export CSV</span>
+                <span className="hidden sm:inline">Export CSV</span>
+                <span className="sm:hidden">Export</span>
               </button>
               <button
                 onClick={fetchSubmissions}
-                className="bg-white bg-opacity-20 text-white border border-white border-opacity-30 px-6 py-3 hover:bg-opacity-30 transition-colors flex items-center space-x-2"
+                className="bg-white bg-opacity-20 text-white border border-white border-opacity-30 px-4 lg:px-6 py-2 lg:py-3 hover:bg-opacity-30 transition-colors flex items-center justify-center space-x-2 text-sm lg:text-base"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <RefreshCw className="w-4 h-4" />
-                <span>Refresh</span>
+                <span className="hidden sm:inline">Refresh</span>
               </button>
               <button
                 onClick={handleLogout}
-                className="bg-white bg-opacity-20 text-white border border-white border-opacity-30 px-6 py-3 hover:bg-opacity-30 transition-colors flex items-center space-x-2"
+                className="bg-white bg-opacity-20 text-white border border-white border-opacity-30 px-4 lg:px-6 py-2 lg:py-3 hover:bg-opacity-30 transition-colors flex items-center justify-center space-x-2 text-sm lg:text-base"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <Lock className="w-4 h-4" />
-                <span>Logout</span>
+                <span className="hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
@@ -247,10 +260,10 @@ const Admin = () => {
         </div>
 
         {/* Filters */}
-        <div className="bg-white border border-gray-200 mb-6 p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white border border-gray-200 mb-6 p-4 lg:p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
             <div>
-              <label className="block text-sm font-medium text-[#0d0c09] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Search</label>
+              <label className="block text-sm font-medium text-[#0d0c09] mb-2 lg:mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Search</label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
@@ -258,17 +271,17 @@ const Admin = () => {
                   placeholder="Search submissions..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 lg:py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent text-sm lg:text-base"
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#0d0c09] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Filter by Form Type</label>
+              <label className="block text-sm font-medium text-[#0d0c09] mb-2 lg:mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Filter by Form Type</label>
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value as 'all' | 'hero' | 'contact')}
-                className="w-full px-3 py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent"
+                className="w-full px-3 py-2 lg:py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent text-sm lg:text-base"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <option value="all">All Forms</option>
@@ -277,11 +290,11 @@ const Admin = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#0d0c09] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Sort by Date</label>
+              <label className="block text-sm font-medium text-[#0d0c09] mb-2 lg:mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Sort by Date</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest')}
-                className="w-full px-3 py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent"
+                className="w-full px-3 py-2 lg:py-3 border border-gray-300 focus:ring-2 focus:ring-[#0b1c26] focus:border-transparent text-sm lg:text-base"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <option value="newest">Newest First</option>
@@ -305,27 +318,29 @@ const Admin = () => {
               <p style={{ fontFamily: 'Inter, sans-serif' }}>No submissions found</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Form Type
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Contact Info
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Details
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Date
-                    </th>
-                  </tr>
-                </thead>
+            <>
+              {/* Desktop Table */}
+              <div className="hidden lg:block overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Form Type
+                      </th>
+                      <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Contact Info
+                      </th>
+                      <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Details
+                      </th>
+                      <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Date
+                      </th>
+                    </tr>
+                  </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {sortedSubmissions.map((submission) => (
-                    <tr key={submission.id} className="hover:bg-gray-50">
+                    <tr key={submission.id} className="hover:bg-gray-50 cursor-pointer" onClick={() => handleLeadClick(submission)}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-3 py-1 text-xs font-medium ${getFormTypeColor(submission.form_type)}`} style={{ fontFamily: 'Inter, sans-serif' }}>
                           {getFormTypeLabel(submission.form_type)}
@@ -381,9 +396,194 @@ const Admin = () => {
                 </tbody>
               </table>
             </div>
+
+            {/* Mobile Cards */}
+            <div className="lg:hidden">
+              <div className="space-y-4 p-4">
+                {sortedSubmissions.map((submission) => (
+                  <div 
+                    key={submission.id} 
+                    className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
+                    onClick={() => handleLeadClick(submission)}
+                  >
+                    <div className="flex justify-between items-start mb-3">
+                      <span className={`inline-flex px-3 py-1 text-xs font-medium ${getFormTypeColor(submission.form_type)}`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {getFormTypeLabel(submission.form_type)}
+                      </span>
+                      <div className="text-xs text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {submission.created_at ? new Date(submission.created_at).toLocaleDateString() : 'N/A'}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <User className="w-4 h-4 mr-2 text-[#0b1c26]" />
+                        {submission.name}
+                      </div>
+                      <div className="flex items-center text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <Mail className="w-4 h-4 mr-2 text-[#0b1c26]" />
+                        {submission.email}
+                      </div>
+                      {submission.phone && (
+                        <div className="flex items-center text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          <Phone className="w-4 h-4 mr-2 text-[#0b1c26]" />
+                          {submission.phone}
+                        </div>
+                      )}
+                      {submission.location && (
+                        <div className="flex items-center text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          <MapPin className="w-4 h-4 mr-2 text-[#0b1c26]" />
+                          {submission.location}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {submission.project_description && (
+                      <div className="mt-3 text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <div className="flex items-start">
+                          <MessageSquare className="w-4 h-4 mr-2 text-[#0b1c26] mt-0.5 flex-shrink-0" />
+                          <span className="line-clamp-2">{submission.project_description}</span>
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="mt-3 text-xs text-gray-500 text-right" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      Tap to view details
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            </>
           )}
         </div>
       </div>
+
+      {/* Lead Detail Modal */}
+      {showLeadModal && selectedSubmission && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200" style={{ backgroundColor: '#0b1c26' }}>
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-white bg-opacity-20 rounded-lg">
+                  <User className="w-5 h-5 text-white" />
+                </div>
+                <h2 className="text-xl font-medium text-white" style={{ fontFamily: 'Inter, sans-serif' }}>Lead Details</h2>
+              </div>
+              <button
+                onClick={closeLeadModal}
+                className="p-2 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-6">
+              {/* Form Type Badge */}
+              <div className="flex items-center space-x-3">
+                <span className={`inline-flex px-3 py-1 text-sm font-medium ${getFormTypeColor(selectedSubmission.form_type)}`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {getFormTypeLabel(selectedSubmission.form_type)}
+                </span>
+                <span className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {selectedSubmission.created_at ? new Date(selectedSubmission.created_at).toLocaleDateString() : 'N/A'}
+                </span>
+                <span className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {selectedSubmission.created_at ? new Date(selectedSubmission.created_at).toLocaleTimeString() : ''}
+                </span>
+              </div>
+
+              {/* Contact Information */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Contact Information</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <User className="w-5 h-5 text-[#0b1c26]" />
+                    <div>
+                      <p className="text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Name</p>
+                      <p className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>{selectedSubmission.name}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <Mail className="w-5 h-5 text-[#0b1c26]" />
+                    <div>
+                      <p className="text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Email</p>
+                      <p className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>{selectedSubmission.email}</p>
+                    </div>
+                  </div>
+
+                  {selectedSubmission.phone && (
+                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                      <Phone className="w-5 h-5 text-[#0b1c26]" />
+                      <div>
+                        <p className="text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Phone</p>
+                        <p className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>{selectedSubmission.phone}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedSubmission.location && (
+                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                      <MapPin className="w-5 h-5 text-[#0b1c26]" />
+                      <div>
+                        <p className="text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Location</p>
+                        <p className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>{selectedSubmission.location}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Project Description */}
+              {selectedSubmission.project_description && (
+                <div className="space-y-3">
+                  <h3 className="text-lg font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Project Description</h3>
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-start space-x-3">
+                      <MessageSquare className="w-5 h-5 text-[#0b1c26] mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-[#0d0c09] leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {selectedSubmission.project_description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Actions */}
+              <div className="flex space-x-3 pt-4 border-t border-gray-200">
+                <button
+                  onClick={() => window.open(`mailto:${selectedSubmission.email}`)}
+                  className="flex-1 bg-[#0b1c26] text-white py-2 px-4 rounded-lg hover:bg-[#0b1c26]/90 transition-colors flex items-center justify-center space-x-2"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Send Email</span>
+                </button>
+                {selectedSubmission.phone && (
+                  <button
+                    onClick={() => window.open(`tel:${selectedSubmission.phone}`)}
+                    className="flex-1 bg-white text-[#0b1c26] border border-[#0b1c26] py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center space-x-2"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>Call</span>
+                  </button>
+                )}
+                <button
+                  onClick={closeLeadModal}
+                  className="px-4 py-2 border border-gray-300 text-[#0d0c09] rounded-lg hover:bg-gray-50 transition-colors"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
