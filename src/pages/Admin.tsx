@@ -168,19 +168,45 @@ const Admin = () => {
 
     try {
       setDeletingId(submissionToDelete.id);
-      console.log('Deleting submission:', submissionToDelete.id);
+      console.log('🗑️ Attempting to delete submission:', submissionToDelete.id);
+      console.log('📊 Submission details:', submissionToDelete);
 
-      const { error } = await supabase
+      // First, let's check if we can read the submission
+      const { data: checkData, error: checkError } = await supabase
         .from('form_submissions')
-        .delete()
-        .eq('id', submissionToDelete.id);
+        .select('*')
+        .eq('id', submissionToDelete.id)
+        .single();
 
-      if (error) {
-        console.error('Delete error:', error);
-        throw error;
+      console.log('🔍 Check submission exists:', { checkData, checkError });
+
+      if (checkError) {
+        console.error('❌ Error checking submission:', checkError);
+        throw new Error(`Cannot access submission: ${checkError.message}`);
       }
 
-      console.log('Submission deleted successfully');
+      // Now try to delete
+      const { data: deleteData, error: deleteError } = await supabase
+        .from('form_submissions')
+        .delete()
+        .eq('id', submissionToDelete.id)
+        .select();
+
+      console.log('🗑️ Delete result:', { deleteData, deleteError });
+
+      if (deleteError) {
+        console.error('❌ Delete error:', deleteError);
+        console.error('❌ Error details:', {
+          message: deleteError.message,
+          details: deleteError.details,
+          hint: deleteError.hint,
+          code: deleteError.code
+        });
+        throw new Error(`Delete failed: ${deleteError.message}`);
+      }
+
+      console.log('✅ Submission deleted successfully from Supabase');
+      console.log('📊 Deleted data:', deleteData);
       
       // Remove from local state
       setSubmissions(prev => prev.filter(sub => sub.id !== submissionToDelete.id));
@@ -189,8 +215,11 @@ const Admin = () => {
       setShowDeleteConfirm(false);
       setSubmissionToDelete(null);
       
+      // Clear any previous errors
+      setError('');
+      
     } catch (error) {
-      console.error('Error deleting submission:', error);
+      console.error('❌ Error deleting submission:', error);
       setError(`Failed to delete submission: ${error.message}`);
     } finally {
       setDeletingId(null);
@@ -201,6 +230,52 @@ const Admin = () => {
     setShowDeleteConfirm(false);
     setSubmissionToDelete(null);
   };
+
+  // Test Supabase permissions
+  const testSupabasePermissions = async () => {
+    try {
+      console.log('🧪 Testing Supabase permissions...');
+      
+      // Test read permission
+      const { data: readData, error: readError } = await supabase
+        .from('form_submissions')
+        .select('*')
+        .limit(1);
+      
+      console.log('📖 Read test:', { readData, readError });
+      
+      // Test insert permission (we won't actually insert)
+      const testSubmission = {
+        form_type: 'test' as const,
+        name: 'Test User',
+        email: 'test@example.com',
+        phone: '123-456-7890'
+      };
+      
+      console.log('📝 Insert test data:', testSubmission);
+      
+      // Test delete permission by trying to delete a non-existent record
+      const { data: deleteData, error: deleteError } = await supabase
+        .from('form_submissions')
+        .delete()
+        .eq('id', '00000000-0000-0000-0000-000000000000')
+        .select();
+      
+      console.log('🗑️ Delete test (non-existent):', { deleteData, deleteError });
+      
+      // Check RLS policies
+      const { data: policies, error: policiesError } = await supabase
+        .rpc('get_table_policies', { table_name: 'form_submissions' });
+      
+      console.log('🔒 RLS Policies:', { policies, policiesError });
+      
+    } catch (error) {
+      console.error('❌ Permission test failed:', error);
+    }
+  };
+
+  // Make test function available globally
+  (window as any).testSupabasePermissions = testSupabasePermissions;
 
   if (!isAuthenticated) {
     return (
