@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Footer from '../components/Footer';
-import { supabase, FormSubmission } from '../lib/supabase';
+import { submitForm } from '../lib/formService';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,39 +28,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Submit to Supabase
-      const submission: FormSubmission = {
-        form_type: 'contact',
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        project_description: formData.projectDescription.trim()
-      };
+      const result = await submitForm(formData, 'contact');
 
-      const { data, error } = await supabase
-        .from('form_submissions')
-        .insert([submission])
-        .select();
-
-      console.log('Contact form submission result:', { data, error });
-
-      if (error) {
-        console.error('Contact form submission error:', error);
-        throw error;
+      if (result.success) {
+        setSuccessMessage(result.message);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          projectDescription: ''
+        });
+      } else {
+        setErrorMessage(result.message);
       }
-
-      console.log('Contact form submitted successfully:', data);
-
-      setSuccessMessage('Thank you for your message! We will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectDescription: ''
-      });
     } catch (error) {
       console.error('Error submitting form:', error);
-      setErrorMessage('Something went wrong. Please try again.');
+      setErrorMessage('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

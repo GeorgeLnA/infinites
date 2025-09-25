@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { submitForm } from '../lib/formService';
 
 const Dealer = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,9 @@ const Dealer = () => {
     email: '',
     onlineOnly: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,10 +25,36 @@ const Dealer = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Dealer form submitted:', formData);
+    setErrorMessage('');
+    setSuccessMessage('');
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitForm(formData, 'dealer');
+
+      if (result.success) {
+        setSuccessMessage(result.message);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          company: '',
+          zipCode: '',
+          country: '',
+          phone: '',
+          email: '',
+          onlineOnly: ''
+        });
+      } else {
+        setErrorMessage(result.message);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrorMessage('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
@@ -244,6 +274,18 @@ const Dealer = () => {
               </p>
             </div>
 
+            {/* Success/Error Messages */}
+            {successMessage && (
+              <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                {successMessage}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                {errorMessage}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -376,10 +418,13 @@ const Dealer = () => {
 
               <button
                 type="submit"
-                className="w-full group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white transition-all duration-300 ease-out bg-[#0b1c26] hover:bg-[#0b1c26]/90 rounded-none shadow-lg hover:scale-105 hover:shadow-[#0b1c26] hover:shadow-lg active:scale-95"
+                disabled={isSubmitting}
+                className="w-full group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white transition-all duration-300 ease-out bg-[#0b1c26] hover:bg-[#0b1c26]/90 rounded-none shadow-lg hover:scale-105 hover:shadow-[#0b1c26] hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                <span className="relative font-medium text-lg tracking-wider">Submit Application</span>
+                <span className="relative font-medium text-lg tracking-wider">
+                  {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                </span>
               </button>
             </form>
 
