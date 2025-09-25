@@ -1,4 +1,5 @@
 import emailjs from '@emailjs/browser';
+import './debugEmailJS'; // Import debug utility
 
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_wae3rzs'; // Your EmailJS service ID
@@ -14,7 +15,7 @@ export interface EmailData {
   phone?: string;
   company?: string;
   projectDescription?: string;
-  formType: 'contact' | 'dealer' | 'booking';
+  formType: 'contact' | 'dealer' | 'booking' | 'hero';
   additionalData?: Record<string, any>;
 }
 
@@ -115,6 +116,17 @@ export const formatEmailData = (formData: any, formType: EmailData['formType']):
         email: formData.email || 'booking@infinitespa.co',
         formType: 'booking',
         additionalData: formData,
+      };
+    case 'hero':
+      return {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        formType: 'hero',
+        projectDescription: `Location: ${formData.location || 'Not specified'}`,
+        additionalData: {
+          location: formData.location,
+        },
       };
     default:
       return {

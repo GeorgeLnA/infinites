@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase, FormSubmission } from '../lib/supabase';
+import { submitForm } from '../lib/formService';
 
 const Hero = () => {
   const [name, setName] = useState('');
@@ -39,38 +39,28 @@ const Hero = () => {
 
     setIsSubmitting(true);
     try {
-      // Submit to Supabase
-      const submission: FormSubmission = {
-        form_type: 'hero',
+      const formData = {
         name: name.trim(),
         email: email.trim(),
         phone: phone.trim(),
         location: location
       };
 
-      const { data, error } = await supabase
-        .from('form_submissions')
-        .insert([submission])
-        .select();
+      const result = await submitForm(formData, 'hero');
 
-      console.log('Hero form submission result:', { data, error });
-
-      if (error) {
-        console.error('Hero form submission error:', error);
-        throw error;
+      if (result.success) {
+        setSuccessMessage(result.message);
+        setName('');
+        setEmail('');
+        setPhone('');
+        setLocation('');
+        navigate('/confirmation');
+      } else {
+        setErrorMessage(result.message);
       }
-
-      console.log('Hero form submitted successfully:', data);
-
-      setSuccessMessage('Thanks! We will reach out shortly.');
-      setName('');
-      setEmail('');
-      setPhone('');
-      setLocation('');
-      navigate('/confirmation');
     } catch (error) {
       console.error('Error submitting form:', error);
-      setErrorMessage('Something went wrong. Please try again.');
+      setErrorMessage('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

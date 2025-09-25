@@ -9,7 +9,7 @@ export interface FormSubmissionResult {
 
 export const submitForm = async (
   formData: any,
-  formType: 'contact' | 'dealer' | 'booking'
+  formType: 'contact' | 'dealer' | 'booking' | 'hero'
 ): Promise<FormSubmissionResult> => {
   try {
     // First, save to Supabase
@@ -50,7 +50,7 @@ export const submitForm = async (
 
 const saveToSupabase = async (
   formData: any,
-  formType: 'contact' | 'dealer' | 'booking'
+  formType: 'contact' | 'dealer' | 'booking' | 'hero'
 ): Promise<FormSubmissionResult> => {
   try {
     let submission: FormSubmission;
@@ -83,6 +83,16 @@ const saveToSupabase = async (
           email: formData.email?.trim() || 'booking@infinitespa.co',
           phone: formData.phone?.trim() || '',
           project_description: formData.message?.trim() || 'Booking consultation request'
+        };
+        break;
+      
+      case 'hero':
+        submission = {
+          form_type: 'hero',
+          name: formData.name?.trim() || '',
+          email: formData.email?.trim() || '',
+          phone: formData.phone?.trim() || '',
+          project_description: `Location: ${formData.location?.trim() || 'Not specified'}`
         };
         break;
       
