@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, FormSubmission } from '../lib/supabase';
-import { Download, Eye, Filter, Search, Calendar, User, Mail, Phone, MapPin, MessageSquare, Lock, RefreshCw, X } from 'lucide-react';
+import { Download, Eye, Filter, Search, Calendar, User, Mail, Phone, MapPin, MessageSquare, Lock, RefreshCw, X, Trash2 } from 'lucide-react';
 
 const Admin = () => {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
@@ -13,6 +13,9 @@ const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
   const [showLeadModal, setShowLeadModal] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [submissionToDelete, setSubmissionToDelete] = useState<FormSubmission | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -152,6 +155,51 @@ const Admin = () => {
   const closeLeadModal = () => {
     setSelectedSubmission(null);
     setShowLeadModal(false);
+  };
+
+  const handleDeleteClick = (submission: FormSubmission, event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevent row click
+    setSubmissionToDelete(submission);
+    setShowDeleteConfirm(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!submissionToDelete) return;
+
+    try {
+      setDeletingId(submissionToDelete.id);
+      console.log('Deleting submission:', submissionToDelete.id);
+
+      const { error } = await supabase
+        .from('form_submissions')
+        .delete()
+        .eq('id', submissionToDelete.id);
+
+      if (error) {
+        console.error('Delete error:', error);
+        throw error;
+      }
+
+      console.log('Submission deleted successfully');
+      
+      // Remove from local state
+      setSubmissions(prev => prev.filter(sub => sub.id !== submissionToDelete.id));
+      
+      // Close modal
+      setShowDeleteConfirm(false);
+      setSubmissionToDelete(null);
+      
+    } catch (error) {
+      console.error('Error deleting submission:', error);
+      setError(`Failed to delete submission: ${error.message}`);
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteConfirm(false);
+    setSubmissionToDelete(null);
   };
 
   if (!isAuthenticated) {
@@ -336,6 +384,9 @@ const Admin = () => {
                       <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
                         Date
                       </th>
+                      <th className="px-6 py-4 text-left text-xs font-medium text-[#0d0c09] uppercase tracking-wider" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -391,6 +442,20 @@ const Admin = () => {
                           {submission.created_at ? new Date(submission.created_at).toLocaleTimeString() : ''}
                         </div>
                       </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-[#0d0c09]">
+                        <button
+                          onClick={(e) => handleDeleteClick(submission, e)}
+                          disabled={deletingId === submission.id}
+                          className="p-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          title="Delete submission"
+                        >
+                          {deletingId === submission.id ? (
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
+                          ) : (
+                            <Trash2 className="w-4 h-4" />
+                          )}
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -410,8 +475,22 @@ const Admin = () => {
                       <span className={`inline-flex px-3 py-1 text-xs font-medium ${getFormTypeColor(submission.form_type)}`} style={{ fontFamily: 'Inter, sans-serif' }}>
                         {getFormTypeLabel(submission.form_type)}
                       </span>
-                      <div className="text-xs text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
-                        {submission.created_at ? new Date(submission.created_at).toLocaleDateString() : 'N/A'}
+                      <div className="flex items-center space-x-2">
+                        <div className="text-xs text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          {submission.created_at ? new Date(submission.created_at).toLocaleDateString() : 'N/A'}
+                        </div>
+                        <button
+                          onClick={(e) => handleDeleteClick(submission, e)}
+                          disabled={deletingId === submission.id}
+                          className="p-1 text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          title="Delete submission"
+                        >
+                          {deletingId === submission.id ? (
+                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-red-600"></div>
+                          ) : (
+                            <Trash2 className="w-3 h-3" />
+                          )}
+                        </button>
                       </div>
                     </div>
                     
@@ -578,6 +657,89 @@ const Admin = () => {
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && submissionToDelete && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-red-100 rounded-lg">
+                  <Trash2 className="w-5 h-5 text-red-600" />
+                </div>
+                <h2 className="text-xl font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>Delete Lead</h2>
+              </div>
+              <button
+                onClick={cancelDelete}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6">
+              <p className="text-[#0d0c09] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Are you sure you want to delete this lead? This action cannot be undone.
+              </p>
+              
+              <div className="bg-gray-50 p-4 rounded-lg mb-6">
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <User className="w-4 h-4 text-[#0b1c26]" />
+                    <span className="text-sm font-medium text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {submissionToDelete.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Mail className="w-4 h-4 text-[#0b1c26]" />
+                    <span className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {submissionToDelete.email}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="w-4 h-4 text-[#0b1c26]" />
+                    <span className="text-sm text-[#0d0c09]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {submissionToDelete.created_at ? new Date(submissionToDelete.created_at).toLocaleDateString() : 'N/A'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex space-x-3">
+                <button
+                  onClick={confirmDelete}
+                  disabled={deletingId === submissionToDelete.id}
+                  className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  {deletingId === submissionToDelete.id ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span>Deleting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Trash2 className="w-4 h-4" />
+                      <span>Delete Lead</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={cancelDelete}
+                  disabled={deletingId === submissionToDelete.id}
+                  className="px-4 py-2 border border-gray-300 text-[#0d0c09] rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Cancel
                 </button>
               </div>
             </div>
