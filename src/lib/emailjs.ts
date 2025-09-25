@@ -4,7 +4,7 @@ import './debugEmailJS'; // Import debug utility
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_wae3rzs'; // Your EmailJS service ID
 const EMAILJS_TEMPLATE_ID = 'template_o1r6i88'; // Your EmailJS template ID
-const EMAILJS_PUBLIC_KEY = 'ZmV7pTaXw3-gYXzYpI-Ss'; // Your EmailJS public key
+const EMAILJS_PUBLIC_KEY = 'j0u-vBDMa2S6oe_6B'; // Your EmailJS public key
 
 // Initialize EmailJS
 emailjs.init(EMAILJS_PUBLIC_KEY);

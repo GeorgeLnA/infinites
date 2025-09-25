@@ -5,11 +5,11 @@ export const debugEmailJS = () => {
   console.log('=== EmailJS Debug Information ===');
   console.log('Service ID:', 'service_wae3rzs');
   console.log('Template ID:', 'template_o1r6i88');
-  console.log('Public Key:', 'ZmV7pTaXw3-gYXzYpI-Ss');
+  console.log('Public Key:', 'j0u-vBDMa2S6oe_6B');
   
   // Test EmailJS initialization
   try {
-    emailjs.init('ZmV7pTaXw3-gYXzYpI-Ss');
+    emailjs.init('j0u-vBDMa2S6oe_6B');
     console.log('✅ EmailJS initialized successfully');
   } catch (error) {
     console.error('❌ EmailJS initialization failed:', error);
