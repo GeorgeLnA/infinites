@@ -7,7 +7,7 @@ Use this content when creating your email template in the EmailJS dashboard:
 New {{form_type}} Form Submission - Infinite Spa
 ```
 
-## HTML Template
+## HTML Template (Simplified Version)
 ```html
 <!DOCTYPE html>
 <html lang="en">
