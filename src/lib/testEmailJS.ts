@@ -14,8 +14,8 @@ export const testEmailJSConnection = async () => {
         company: 'Test Company',
         project_description: 'This is a test email',
         form_type: 'contact',
-        to_email: 'mattboney@infinitemodularspa.com',
-        to_name: 'Matt Boney',
+        to_email: 'matt@infinitespa.co',
+        to_name: 'Matt',
       }
     );
     

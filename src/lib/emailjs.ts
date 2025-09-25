@@ -30,27 +30,52 @@ export const sendEmail = async (emailData: EmailData): Promise<{ success: boolea
       timeZoneName: 'short'
     });
 
-    const templateParams = {
-      from_name: emailData.name,
-      from_email: emailData.email,
-      phone: emailData.phone || 'Not provided',
-      company: emailData.company || 'Not provided',
-      project_description: emailData.projectDescription || 'No message provided',
-      form_type: emailData.formType.toUpperCase(),
-      additional_data: emailData.additionalData ? JSON.stringify(emailData.additionalData, null, 2) : 'None',
-      to_email: 'mattboney@infinitemodularspa.com', // Your business email
-      to_name: 'Matt Boney',
-      timestamp: timestamp,
-    };
+    // Send to both recipients
+    const recipients = [
+      { email: 'matt@infinitespa.co', name: 'Matt' },
+      { email: 'georgeemh@gmail.com', name: 'George' }
+    ];
 
-    const result = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      templateParams
+    const results = await Promise.allSettled(
+      recipients.map(recipient => {
+        const templateParams = {
+          from_name: emailData.name,
+          from_email: emailData.email,
+          phone: emailData.phone || 'Not provided',
+          company: emailData.company || 'Not provided',
+          project_description: emailData.projectDescription || 'No message provided',
+          form_type: emailData.formType.toUpperCase(),
+          additional_data: emailData.additionalData ? JSON.stringify(emailData.additionalData, null, 2) : 'None',
+          to_email: recipient.email,
+          to_name: recipient.name,
+          timestamp: timestamp,
+        };
+
+        return emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          templateParams
+        );
+      })
     );
 
-    console.log('Email sent successfully:', result);
-    return { success: true };
+    // Check if at least one email was sent successfully
+    const successfulSends = results.filter(result => result.status === 'fulfilled');
+    const failedSends = results.filter(result => result.status === 'rejected');
+
+    if (successfulSends.length > 0) {
+      console.log('Email sent successfully to:', successfulSends.length, 'recipients');
+      if (failedSends.length > 0) {
+        console.warn('Some emails failed to send:', failedSends);
+      }
+      return { success: true };
+    } else {
+      console.error('All emails failed to send:', failedSends);
+      return { 
+        success: false, 
+        error: 'Failed to send email to any recipients' 
+      };
+    }
   } catch (error) {
     console.error('Error sending email:', error);
     return { 

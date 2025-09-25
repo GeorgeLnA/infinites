@@ -65,7 +65,7 @@ const EMAILJS_PUBLIC_KEY = 'ZmV7pTaXw3-gYXzYpI-Ss'; // ✅ Already set
 - ✅ Service ID: `service_wae3rzs` (already configured)
 - ✅ Public Key: `ZmV7pTaXw3-gYXzYpI-Ss` (already configured)
 - ✅ Template ID: `template_o1r6i88` (already configured)
-- ✅ Email Recipient: `mattboney@infinitemodularspa.com` (already configured)
+- ✅ Email Recipients: `matt@infinitespa.co` and `georgeemh@gmail.com` (already configured)
 
 ## Step 6: Test the Integration
 
