@@ -52,6 +52,8 @@ export const sendEmail = async (emailData: EmailData): Promise<{ success: boolea
           timestamp: timestamp,
         };
 
+        console.log(`📤 Sending email to ${recipient.email} with params:`, templateParams);
+
         return emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
@@ -65,13 +67,23 @@ export const sendEmail = async (emailData: EmailData): Promise<{ success: boolea
     const failedSends = results.filter(result => result.status === 'rejected');
 
     if (successfulSends.length > 0) {
-      console.log('Email sent successfully to:', successfulSends.length, 'recipients');
+      console.log('✅ Email sent successfully to:', successfulSends.length, 'recipients');
       if (failedSends.length > 0) {
-        console.warn('Some emails failed to send:', failedSends);
+        console.warn('⚠️ Some emails failed to send:', failedSends);
+        failedSends.forEach((failed, index) => {
+          console.error(`❌ Failed send ${index + 1}:`, failed.reason);
+        });
       }
       return { success: true };
     } else {
-      console.error('All emails failed to send:', failedSends);
+      console.error('❌ All emails failed to send:', failedSends);
+      failedSends.forEach((failed, index) => {
+        console.error(`❌ Failed send ${index + 1}:`, {
+          message: failed.reason?.message,
+          status: failed.reason?.status,
+          text: failed.reason?.text
+        });
+      });
       return { 
         success: false, 
         error: 'Failed to send email to any recipients' 

@@ -17,24 +17,33 @@ export const debugEmailJS = () => {
   
   // Test email sending
   const testEmail = async () => {
+    const testParams = {
+      from_name: 'Test User',
+      from_email: 'test@example.com',
+      phone: '123-456-7890',
+      form_type: 'CONTACT',
+      to_email: 'matt@infinitespa.co',
+      to_name: 'Matt',
+      timestamp: new Date().toLocaleString()
+    };
+    
+    console.log('📤 Sending test email with params:', testParams);
+    
     try {
       const result = await emailjs.send(
         'service_wae3rzs',
         'template_o1r6i88',
-        {
-          from_name: 'Test User',
-          from_email: 'test@example.com',
-          phone: '123-456-7890',
-          form_type: 'CONTACT',
-          to_email: 'matt@infinitespa.co',
-          to_name: 'Matt',
-          timestamp: new Date().toLocaleString()
-        }
+        testParams
       );
       console.log('✅ Test email sent successfully:', result);
       return { success: true, result };
     } catch (error) {
       console.error('❌ Test email failed:', error);
+      console.error('❌ Error details:', {
+        message: error.message,
+        status: error.status,
+        text: error.text
+      });
       return { success: false, error };
     }
   };
