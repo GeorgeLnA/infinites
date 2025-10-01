@@ -97,6 +97,12 @@ export const ProductCategoriesSection = () => {
       image: "/airender6.png",
       titleParts: ["Modern", "Spa", "Retreat"],
     },
+    {
+      id: 8,
+      title: "Luxury Wellness Oasis",
+      image: "/6_Photo - 4 (1).jpg",
+      titleParts: ["Luxury", "Wellness", "Oasis"],
+    },
   ];
 
   return (
