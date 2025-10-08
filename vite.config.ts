@@ -6,11 +6,19 @@ import viteCompression from 'vite-plugin-compression';
 export default defineConfig({
   plugins: [
     react(),
+    // GZIP compression
     viteCompression({
       algorithm: 'gzip',
       ext: '.gz',
-      threshold: 1024, // Only compress files larger than 1KB
-      deleteOriginFile: false, // Keep original files
+      threshold: 1024,
+      deleteOriginFile: false,
+    }),
+    // Brotli compression (better than gzip)
+    viteCompression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024,
+      deleteOriginFile: false,
     }),
   ],
   base: '/',
@@ -25,5 +33,7 @@ export default defineConfig({
         },
       },
     },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
   },
 });

@@ -31,6 +31,8 @@ const HouseRanges = () => {
             loop
             muted
             playsInline
+            loading="lazy"
+            preload="metadata"
             poster="/6_Photo - 4 (1).jpg"
           />
           {/* Tabs at the top */}

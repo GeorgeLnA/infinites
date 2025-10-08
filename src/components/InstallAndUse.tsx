@@ -40,6 +40,8 @@ export const InstallAndUse = () => {
             loop
             muted
             playsInline
+            loading="lazy"
+            preload="metadata"
             poster="/6_Photo - 4 (1).jpg"
           />
         </div>

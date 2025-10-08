@@ -201,12 +201,15 @@ export const ProductCategoriesSection = () => {
                     loop
                     muted
                     playsInline
+                    loading="lazy"
+                    preload={index === 0 ? "auto" : "metadata"}
                     className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
                   <img
                     src={category.image}
                     alt={category.title}
+                    loading={index < 2 ? "eager" : "lazy"}
                     className="block w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 )}
